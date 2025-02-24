@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,32 +9,26 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed;
     private Vector2 _input;
     private Rigidbody _rb;
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
+    public void OnMove(InputAction.CallbackContext ctx) {
         _input = ctx.ReadValue<Vector2>();
     }
 
-    public void OnJump(InputAction.CallbackContext ctx)
-    {
+    public void OnJump(InputAction.CallbackContext ctx) {
         if (!ctx.performed) return;
 
-        if (OnGround)
-        {
+        if (onGround) {
             jumping = true;
             _rb.velocity = new Vector3(0, jumpStrength, 0);
         }
     }
-    private void Start()
-    {
+    private void Start() {
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
-    {
+    private void Update() {
         Vector3 dir = transform.TransformDirection(new Vector3(_input.x, 0, _input.y));
         _rb.velocity = new Vector3(dir.x * speed, _rb.velocity.y, dir.z * speed);
-        if (jumping)
-        {
+        if (jumping) {
             UpdateJumpMomentum();
         }
     }
@@ -45,18 +41,15 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform groundCheckTransform;
     [SerializeField] private LayerMask groundLayers;
     [SerializeField] private float overlapSphereSize;
+    public bool onGround =>
+        Physics.OverlapSphereNonAlloc(groundCheckTransform.position, overlapSphereSize, new Collider[10], groundLayers) > 0;
 
-    public bool OnGround => Physics.OverlapSphere(groundCheckTransform.position, overlapSphereSize, groundLayers).Length > 0;
 
-
-    private void UpdateJumpMomentum()
-    {
-        if (_rb.velocity.y < 0.5)
-        {
+    private void UpdateJumpMomentum() {
+        if (_rb.velocity.y < 0.5) {
             _rb.velocity -= new Vector3(0, fallVel * Time.deltaTime, 0);
 
-            if (OnGround)
-            {
+            if (onGround) {
                 jumping = false;
             }
         }

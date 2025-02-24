@@ -15,39 +15,33 @@ public class DestructibleObject : MonoBehaviour
     private Rigidbody _rb;
     [SerializeField] private float minVelocityToBreak;
 
-    private void Start()
-    {
+    private void Start() {
         _rb = TryGetComponent(out Rigidbody rb) ? rb : GetComponentInParent<Rigidbody>();
     }
 
     [ContextMenu("Break")]
-    private void DestroyMesh()
-    {
+    private void DestroyMesh() {
         SoundDetector.Instance.ReceiveSound(gameObject, severity);
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
         var parts = new List<PartMesh>();
         var subParts = new List<PartMesh>();
-        var mainPart = new PartMesh
-        {
+        var mainPart = new PartMesh {
             uv = originalMesh.uv,
             vertices = originalMesh.vertices,
             normals = originalMesh.normals,
             triangles = new int[originalMesh.subMeshCount][],
             bounds = originalMesh.bounds
         };
-        for (int i = 0; i < originalMesh.subMeshCount; i++)
-        {
+        for (int i = 0; i < originalMesh.subMeshCount; i++) {
             mainPart.triangles[i] = originalMesh.GetTriangles(i);
         }
             
 
         parts.Add(mainPart);
 
-        for (var c = 0; c < cutCascades; c++)
-        {
-            for (var i = 0; i < parts.Count; i++)
-            {
+        for (var c = 0; c < cutCascades; c++) {
+            for (var i = 0; i < parts.Count; i++) {
                 var bounds = parts[i].bounds;
                 bounds.Expand(0.5f);
 
@@ -62,8 +56,7 @@ public class DestructibleObject : MonoBehaviour
             subParts.Clear();
         }
 
-        for (var i = 0; i < parts.Count; i++)
-        {
+        for (var i = 0; i < parts.Count; i++) {
             parts[i].MakeGameObject(this);
             parts[i].gameObject.GetComponent<Rigidbody>().AddForceAtPosition(parts[i].bounds.center * explodeForce, transform.position);
         }
@@ -71,20 +64,17 @@ public class DestructibleObject : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private PartMesh GenerateMesh(PartMesh original, Plane plane, bool left)
-    {
+    private PartMesh GenerateMesh(PartMesh original, Plane plane, bool left) {
         var partMesh = new PartMesh() { };
         var ray1 = new Ray();
         var ray2 = new Ray();
 
 
-        for (var i = 0; i < original.triangles.Length; i++)
-        {
+        for (var i = 0; i < original.triangles.Length; i++) {
             var triangles = original.triangles[i];
             _edgeSet = false;
 
-            for (var j = 0; j < triangles.Length; j = j + 3)
-            {
+            for (var j = 0; j < triangles.Length; j = j + 3) {
                 var sideA = plane.GetSide(original.vertices[triangles[j]]) == left;
                 var sideB = plane.GetSide(original.vertices[triangles[j + 1]]) == left;
                 var sideC = plane.GetSide(original.vertices[triangles[j + 2]]) == left;
@@ -92,12 +82,10 @@ public class DestructibleObject : MonoBehaviour
                 var sideCount = (sideA ? 1 : 0) +
                                 (sideB ? 1 : 0) +
                                 (sideC ? 1 : 0);
-                if (sideCount == 0)
-                {
+                if (sideCount == 0) {
                     continue;
                 }
-                if (sideCount == 3)
-                {
+                if (sideCount == 3) {
                     partMesh.AddTriangle(i,
                                          original.vertices[triangles[j]], original.vertices[triangles[j + 1]], original.vertices[triangles[j + 2]],
                                          original.normals[triangles[j]], original.normals[triangles[j + 1]], original.normals[triangles[j + 2]],
@@ -129,8 +117,7 @@ public class DestructibleObject : MonoBehaviour
                         Vector2.Lerp(original.uv[triangles[j + singleIndex]], original.uv[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
                         Vector2.Lerp(original.uv[triangles[j + singleIndex]], original.uv[triangles[j + ((singleIndex + 2) % 3)]], lerp2));
 
-                if (sideCount == 1)
-                {
+                if (sideCount == 1) {
                     partMesh.AddTriangle(i,
                                         original.vertices[triangles[j + singleIndex]],
                                         //Vector3.Lerp(originalMesh.vertices[triangles[j + singleIndex]], originalMesh.vertices[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
@@ -147,8 +134,7 @@ public class DestructibleObject : MonoBehaviour
                     continue;
                 }
 
-                if (sideCount == 2)
-                {
+                if (sideCount == 2) {
                     partMesh.AddTriangle(i,
                                         ray1.origin + ray1.direction.normalized * enter1,
                                         original.vertices[triangles[j + ((singleIndex + 1) % 3)]],
@@ -170,8 +156,6 @@ public class DestructibleObject : MonoBehaviour
                                         original.uv[triangles[j + ((singleIndex + 2) % 3)]],
                                         Vector2.Lerp(original.uv[triangles[j + singleIndex]], original.uv[triangles[j + ((singleIndex + 2) % 3)]], lerp2));
                 }
-
-
             }
         }
 
@@ -180,16 +164,14 @@ public class DestructibleObject : MonoBehaviour
         return partMesh;
     }
 
-    private void AddEdge(int subMesh, PartMesh partMesh, Vector3 normal, Vector3 vertex1, Vector3 vertex2, Vector2 uv1, Vector2 uv2)
-    {
+    private void AddEdge(int subMesh, PartMesh partMesh, Vector3 normal, Vector3 vertex1, Vector3 vertex2, Vector2 uv1, Vector2 uv2) {
         if (!_edgeSet)
         {
             _edgeSet = true;
             _edgeVertex = vertex1;
             _edgeUV = uv1;
         }
-        else
-        {
+        else {
             _edgePlane.Set3Points(_edgeVertex, vertex1, vertex2);
 
             partMesh.AddTriangle(subMesh,
@@ -205,8 +187,7 @@ public class DestructibleObject : MonoBehaviour
         }
     }
 
-    private class PartMesh
-    {
+    private class PartMesh {
         private List<Vector3> _vertices = new();
         private List<Vector3> _normals = new();
         private List<List<int>> _triangles = new();
@@ -219,8 +200,7 @@ public class DestructibleObject : MonoBehaviour
         public Bounds bounds;
         
 
-        public void AddTriangle(int submesh, Vector3 vert1, Vector3 vert2, Vector3 vert3, Vector3 normal1, Vector3 normal2, Vector3 normal3, Vector2 uv1, Vector2 uv2, Vector2 uv3)
-        {
+        public void AddTriangle(int submesh, Vector3 vert1, Vector3 vert2, Vector3 vert3, Vector3 normal1, Vector3 normal2, Vector3 normal3, Vector2 uv1, Vector2 uv2, Vector2 uv3) {
             if (_triangles.Count - 1 < submesh)
             {
                 _triangles.Add(new List<int>());
@@ -246,8 +226,7 @@ public class DestructibleObject : MonoBehaviour
             bounds.max = Vector3.Min(bounds.max, vert3);
         }
 
-        public void FillArrays()
-        {
+        public void FillArrays() {
             vertices = _vertices.ToArray();
             normals = _normals.ToArray();
             uv = _uvs.ToArray();
@@ -258,8 +237,7 @@ public class DestructibleObject : MonoBehaviour
             }
         }
 
-        public void MakeGameObject(DestructibleObject original)
-        {
+        public void MakeGameObject(DestructibleObject original) {
             gameObject = new GameObject(original.name);
             gameObject.transform.position = original.transform.position;
             gameObject.transform.rotation = original.transform.rotation;
@@ -287,8 +265,6 @@ public class DestructibleObject : MonoBehaviour
             collider.convex = true;
 
             var rigidbody = gameObject.AddComponent<Rigidbody>();
-
         }
-
     }
 }

@@ -6,8 +6,7 @@ using UnityEngine;
 //TODO: Balancing + Start reducing counter if there hasn't been audio in a while.
 public class SoundDetector : MonoBehaviour
 {
-    public enum Severity
-    {
+    public enum Severity {
         LOUD = 20,
         AUDIBLE = 10,
         QUIET = 5,
@@ -17,22 +16,17 @@ public class SoundDetector : MonoBehaviour
     [SerializeField] private Player player;
     public static SoundDetector Instance;
 
-    private void Awake()
-    {
+    private void Awake() {
         if (Instance == null) Instance = this;
     }
 
-    public void ReceiveSound(GameObject sender, Severity severity)
-    {
+    public void ReceiveSound(GameObject sender, Severity severity) {
         print("Received Sound from " + sender.name);
         if (sender.layer != 8) return;
         print(sender.name + " can send sound.");
-        float d = Vector3.Distance(transform.position, sender.transform.position);
-        print(d);
-        float soundSeverity = GetSoundSeverity(severity, d);
-        switch (soundSeverity)
-        {
-            case <= 2:
+        float soundSeverity = GetSoundSeverity(severity, Vector3.Distance(transform.position, sender.transform.position));
+        switch (soundSeverity) {
+            case <= 1:
                 return;
             case <= 3:
                 _counter++;
@@ -46,10 +40,8 @@ public class SoundDetector : MonoBehaviour
         }
     }
     
-    private static float GetSoundSeverity(Severity severity, float distance)
-    {
-        float result = distance switch
-        {
+    private static float GetSoundSeverity(Severity severity, float distance) {
+        float result = distance switch {
             <= 10f => 6,
             <= 15f => 5,
             <= 20f => 4,
@@ -61,8 +53,7 @@ public class SoundDetector : MonoBehaviour
         return result * ((float)severity / 10);
     }
 
-    private void Alarm()
-    {
+    private void Alarm() {
         print("Alarm");
         player.Lose();
     }

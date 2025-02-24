@@ -12,20 +12,16 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float gamepadSensitivity = 10;
     private float _verticalLookRotation;
 
-    private void Start()
-    {
+    private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }
-    public void LockCamera()
-    {
+    public void LockCamera() {
         Cursor.lockState = CursorLockMode.Locked;
     }
-    public void UnlockCamera()
-    {
+    public void UnlockCamera() {
         Cursor.lockState = CursorLockMode.None;
     }
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
+    public void OnMove(InputAction.CallbackContext ctx) {
         bool gamepad = ctx.control.device is Gamepad;
         float sens = gamepad ? gamepadSensitivity : mouseSensitivity;
         Vector2 rotation = ctx.ReadValue<Vector2>();

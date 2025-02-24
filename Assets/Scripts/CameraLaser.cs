@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class CameraLaser : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Collided with " + other.name);
-        if (other.gameObject.TryGetComponent(out Player player))
-        {
-            GetComponentInParent<SpottingCamera>().Detected(player.gameObject);
+    private SpottingCamera _spottingCamera;
+
+    private void Start() {
+        _spottingCamera = GetComponentInParent<SpottingCamera>();
+    }
+    
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.TryGetComponent(out Player player)) {
+            _spottingCamera.Detected(player.gameObject);
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Player player))
-        {
-            GetComponentInParent<SpottingCamera>().Lost(player.gameObject);
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.TryGetComponent(out Player player)) {
+            _spottingCamera.Lost(player.gameObject);
         }
     }
 }
