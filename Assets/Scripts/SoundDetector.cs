@@ -21,9 +21,9 @@ public class SoundDetector : MonoBehaviour
     }
 
     public void ReceiveSound(GameObject sender, Severity severity) {
-        print("Received Sound from " + sender.name);
+        print($"Received Sound from {sender.name}");
         if (sender.layer != 8) return;
-        print(sender.name + " can send sound.");
+        print($"{sender.name} can send sound.");
         float soundSeverity = GetSoundSeverity(severity, Vector3.Distance(transform.position, sender.transform.position));
         switch (soundSeverity) {
             case <= 1:
@@ -54,7 +54,7 @@ public class SoundDetector : MonoBehaviour
     }
 
     private void Alarm() {
-        print("Alarm");
+        print("Alarm went off");
         player.Lose();
     }
 }
