@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IPickupable {
-	void PickUp();
-	int GetWorth();
+	public void PickUp();
+	public int GetWorth();
 }

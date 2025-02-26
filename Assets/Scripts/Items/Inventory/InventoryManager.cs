@@ -31,12 +31,12 @@ public class InventoryManager : MonoBehaviour {
 		if (index < 0 || index >= items.Count) return false;
 		var item = items[index];
 		items.RemoveAt(index);
-		Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 10f);
+		Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, 10f);
 		if (hit.point != Vector3.zero) {
 			Instantiate(item.obj, hit.point, item.obj.transform.rotation);
 		}
 		else {
-			var v3 = transform.position + transform.forward * 10;
+			var v3 = transform.position + transform.forward;
 			Instantiate(item.obj, v3, item.obj.transform.rotation);
 		}
 		return true;
