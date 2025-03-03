@@ -9,7 +9,6 @@ public class Item : MonoBehaviour, IPickupable
 	public void PickUp() {
 		bool result = InventoryManager.Instance.AddItem(item, item.weight);
 		if (!result) {
-			print($"Inventory is full, could not add {item.name}.");
 			return;
 		}
 		Destroy(gameObject);

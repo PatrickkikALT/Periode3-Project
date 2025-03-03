@@ -250,7 +250,7 @@ Transform:
   m_GameObject: {fileID: 2429577976395247321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.407, y: -0.424, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -268,9 +268,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 9982537
-  m_Range: 214.8
-  m_SpotAngle: 65.6
+  m_Intensity: 889.58
+  m_Range: 305.72
+  m_SpotAngle: 80.06
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -282,18 +282,18 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
-      e00: 1
+      e00: 4
       e01: 0
       e02: 0
       e03: 0
       e10: 0
-      e11: 1
+      e11: 4
       e12: 0
       e13: 0
       e20: 0
       e21: 0
-      e22: 1
-      e23: 0
+      e22: 0.0065440745
+      e23: -1.0006545
       e30: 0
       e31: 0
       e32: 0
@@ -313,10 +313,10 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 5243
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 2.69e-43, z: 0, w: 2.69e-43}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 152.86, w: 152.86041}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
+  m_ShadowRadius: 0.31
   m_ShadowAngle: 0
 --- !u!114 &189714800730168289
 MonoBehaviour:
@@ -330,14 +330,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 10000000
+  m_Intensity: 889.58
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
-  m_InnerSpotPercent: 0
+  m_InnerSpotPercent: 0.03
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
-  m_LightUnit: 0
+  m_LightUnit: 2
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
   m_AffectDiffuse: 1
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_ShapeWidth: 0.5
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
-  m_ShapeRadius: 0.025
+  m_ShapeRadius: 0.31
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 1
@@ -488,6 +488,8 @@ GameObject:
   - component: {fileID: 2787090894565958038}
   - component: {fileID: 6988587912218044257}
   - component: {fileID: 2317339481618900597}
+  - component: {fileID: 2327094215980477847}
+  - component: {fileID: 8224991777467201254}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -648,6 +650,7 @@ MonoBehaviour:
   cameraHolder: {fileID: 6423052616017007480}
   mouseSensitivity: 0.2
   gamepadSensitivity: 1
+  canMove: 1
 --- !u!114 &6988587912218044257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,6 +761,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 269280a6-e39e-412e-aeba-e7c23c47f950
     m_ActionName: Movement/Pick Up[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2327094215980477847}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_MethodName: OpenInventoryUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0c547115-46dc-4272-b4f8-efcc771b7374
+    m_ActionName: Movement/Open Inventory[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -776,3 +795,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 7526401043318120046}
+--- !u!114 &2327094215980477847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668311178013503721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7ef8296b5afb04483d0af43208c538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  maxItems: 20
+  inventoryPanel: {fileID: 0}
+--- !u!114 &8224991777467201254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668311178013503721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd109c4459038f4092d990613ca63ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
