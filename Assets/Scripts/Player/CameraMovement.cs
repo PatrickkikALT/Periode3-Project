@@ -33,16 +33,19 @@ public class CameraMovement : MonoBehaviour
     cameraHolder.localEulerAngles = new Vector3(_verticalLookRotation, 0, 0);
   }
 
-  public void PickUp(InputAction.CallbackContext ctx) {
+  public void Interact(InputAction.CallbackContext ctx) {
     if (!ctx.started) return;
     Physics.Raycast(cameraHolder.position, cameraHolder.forward, out RaycastHit hitInfo, 10f);
-    if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out Item item)) {
+    if (hitInfo.collider == null) return;
+    if (hitInfo.collider.TryGetComponent(out Item item)) {
       item.PickUp();
     }
-
-    if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out BreakableGlass glass)) {
+    if (hitInfo.collider.TryGetComponent(out BreakableGlass glass)) {
       glass.Break();
+    }
+    if (hitInfo.collider.TryGetComponent(out Door door)) {
+      door.OpenDoor();
+      print("Opened door");
     }
   }
 }
-

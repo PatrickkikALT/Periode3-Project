@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
   public int maxBreakableGlass;
   public Object brokenGlass;
   public static GameManager Instance;
+  public Player player { get; private set; }
 
   private void Awake() {
     if (Instance == null) Instance = this; else Destroy(this);
     brokenGlass = Resources.Load("BrokenWindow");
   }
   private void Start() {
+    player = FindObjectOfType<Player>();
     StartCoroutine(CleanList());
   }
 

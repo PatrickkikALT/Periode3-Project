@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,7 @@ public class InventoryManager : MonoBehaviour {
 	[SerializeField] private int maxItems;
 	public static InventoryManager Instance;
 	[SerializeField] private GameObject inventoryPanel;
-
+	[SerializeField] private GameObject inventoryContent;
 	private void Start() {
 		if (Instance == null) Instance = this;
 	}
@@ -41,10 +42,28 @@ public class InventoryManager : MonoBehaviour {
 		}
 		return true;
 	}
+
+	public bool RemoveItem(ItemSO item) {
+		if (!items.Contains(item)) return false;
+		items.Remove(item);
+		return true;
+	}
+	public bool RemoveItemAt(int index) {
+		if (index < 0 || index >= items.Count) return false;
+		try {
+			items.RemoveAt(index);
+			Destroy(inventoryContent.transform.GetChild(index).gameObject);
+			return true;
+		}
+		catch {
+			return false;
+		}
+	}
 	
 	public ItemSO[] GetItems() => items.ToArray();
 
 	public void OpenInventoryUI(InputAction.CallbackContext ctx) {
+		GameManager.Instance.player.GetComponent<CameraMovement>().canMove = false;
 		inventoryPanel.SetActive(!inventoryPanel.activeSelf);
 
 	}

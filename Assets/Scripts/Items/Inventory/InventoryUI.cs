@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,11 @@ public class InventoryUI : MonoBehaviour {
 	[SerializeField] private GameObject itemPanel;
 	[SerializeField] private GameObject inventoryContent; 
 	[SerializeField] private Player player;
+
+	private void Start() {
+		player = GameManager.Instance.player;
+	}
 	public void OnEnable() {
-		player.GetComponent<CameraMovement>().canMove = false;
 		Cursor.lockState = CursorLockMode.None;
 		foreach (ItemSO item in InventoryManager.Instance.GetItems()) {
 			var p = Instantiate(itemPanel, inventoryContent.transform);

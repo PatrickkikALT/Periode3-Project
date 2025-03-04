@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed;
     private Vector2 _input;
     private Rigidbody _rb;
+    public bool canMove = true;
     public void OnMove(InputAction.CallbackContext ctx) {
         _input = ctx.ReadValue<Vector2>();
     }
@@ -26,6 +27,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Update() {
+        if (!canMove) return;
         Vector3 dir = transform.TransformDirection(new Vector3(_input.x, 0, _input.y));
         _rb.velocity = new Vector3(dir.x * speed, _rb.velocity.y, dir.z * speed);
         if (jumping) {
