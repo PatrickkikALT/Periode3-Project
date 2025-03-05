@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
         youLost.SetActive(true);
         GetComponent<CameraMovement>().canMove = false;
         GetComponent<Movement>().canMove = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
     
     public void ToggleFlashlight(InputAction.CallbackContext ctx) {

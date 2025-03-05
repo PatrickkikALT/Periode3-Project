@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb91171210fef094cad5d55a4760a91c, type: 3}
   m_Name: Painting
   m_EditorClassIdentifier: 
-  worth: 10
+  worth: 1000
   weight: 0
   obj: {fileID: 7201799533737104786, guid: 05cc59456bc9581489ed4fb0c541ee24, type: 3}
   sprite: {fileID: 0}

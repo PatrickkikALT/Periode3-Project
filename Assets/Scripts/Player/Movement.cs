@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     private Vector2 _input;
     private Rigidbody _rb;
     public bool canMove = true;
+    [SerializeField] private LayerMask stairLayer;
+    private bool _isTouchingStairs => Physics.OverlapSphereNonAlloc(transform.position, overlapSphereSize, new Collider[2], stairLayer) > 0;
     public void OnMove(InputAction.CallbackContext ctx) {
         _input = ctx.ReadValue<Vector2>();
     }
@@ -29,6 +31,9 @@ public class Movement : MonoBehaviour
     private void Update() {
         if (!canMove) return;
         Vector3 dir = transform.TransformDirection(new Vector3(_input.x, 0, _input.y));
+        if (_isTouchingStairs) {
+            _rb.velocity = new Vector3(dir.x, 0, dir.z) * speed;
+        }
         _rb.velocity = new Vector3(dir.x * speed, _rb.velocity.y, dir.z * speed);
         if (jumping) {
             UpdateJumpMomentum();

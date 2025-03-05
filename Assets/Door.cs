@@ -6,31 +6,33 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
   private bool _opened;
-  private Vector3 _openTarget, _closeTarget;
+  private Quaternion _openTarget, _closeTarget;
+
   private void Start() {
-    _openTarget = transform.rotation.eulerAngles;
-    _openTarget.y -= 90;
-    _closeTarget = transform.rotation.eulerAngles;
+    _openTarget = transform.rotation * Quaternion.Euler(0, -90, 0);
+    _closeTarget = transform.rotation;
   }
+
   public void OpenDoor() {
     if (!_opened) {
       StopAllCoroutines();
-      print($"Target rotation {_openTarget}");
+      print($"Target rotation {_openTarget.eulerAngles}");
       StartCoroutine(DoorAnimation(_openTarget));
       _opened = true;
     }
     else {
       StopAllCoroutines();
-      print($"Target rotation {_closeTarget}");
+      print($"Target rotation {_closeTarget.eulerAngles}");
       StartCoroutine(DoorAnimation(_closeTarget));
       _opened = false;
     }
   }
 
-  public IEnumerator DoorAnimation(Vector3 target) {
-    while (Math.Abs(transform.rotation.y - target.y) > 1) {
-      transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(target), 1 * Time.deltaTime);
+  public IEnumerator DoorAnimation(Quaternion target) {
+    while (Quaternion.Angle(transform.rotation, target) > 1f) {
+      transform.rotation = Quaternion.Lerp(transform.rotation, target, Time.deltaTime * 2f);
       yield return null;
     }
+    transform.rotation = target;
   }
 }
