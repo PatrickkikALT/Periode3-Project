@@ -45,7 +45,9 @@ public class CameraMovement : MonoBehaviour
     }
     if (hitInfo.collider.TryGetComponent(out Door door)) {
       door.OpenDoor();
-      print("Opened door");
+    }
+    if (hitInfo.collider.TryGetComponent(out Safe safe)) {
+      safe.OpenSafe();
     }
   }
 }

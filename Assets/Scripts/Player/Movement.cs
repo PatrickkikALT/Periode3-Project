@@ -31,10 +31,10 @@ public class Movement : MonoBehaviour
     private void Update() {
         if (!canMove) return;
         Vector3 dir = transform.TransformDirection(new Vector3(_input.x, 0, _input.y));
-        if (_isTouchingStairs) {
-            _rb.velocity = new Vector3(dir.x, 0, dir.z) * speed;
-        }
         _rb.velocity = new Vector3(dir.x * speed, _rb.velocity.y, dir.z * speed);
+        if (_isTouchingStairs) {
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z) * speed;
+        }
         if (jumping) {
             UpdateJumpMomentum();
         }

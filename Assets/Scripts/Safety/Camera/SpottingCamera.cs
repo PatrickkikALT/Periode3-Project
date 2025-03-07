@@ -11,7 +11,7 @@ public class SpottingCamera : MonoBehaviour
   [SerializeField] private Transform turnPoint;
   [Tooltip("The target of the rotation.")]
   [SerializeField] private int lTarget;
-  [SerializeField] private float rTarget;
+  [SerializeField] private int rTarget;
   [Tooltip("How fast the camera moves in degrees.")]
   [SerializeField] private int speed;
 
@@ -23,27 +23,14 @@ public class SpottingCamera : MonoBehaviour
   private Coroutine _current;
   [SerializeField] private int secondsUntilDetection;
   private bool _canMove = true;
-  [SerializeField] private LineRenderer _lineRenderer;
 
-
-  private void Start() {
-    _lineRenderer.startColor = Color.red;
-    _lineRenderer.endColor = Color.red;
-    _lineRenderer.startWidth = 0.01f;
-    _lineRenderer.endWidth = 3;
-    _lineRenderer.positionCount = 2;
-    _lineRenderer.SetPosition(0, transform.position);
-    
-  }
+  
   private void FixedUpdate()
   {
     if (!hasSpottedPlayer && _canMove && doesTurn) {
       HandleCameraTurn();
     }
     Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity);
-    if (hit.collider is not null) {
-      _lineRenderer.SetPosition(1, hit.point);
-    }
     if (hit.collider is not null && hit.collider.TryGetComponent(out Player player)) {
       Detected(player.gameObject);
     }
@@ -73,11 +60,13 @@ public class SpottingCamera : MonoBehaviour
   }
      
   private void HandleCameraTurn() {
-    float yRotation = Mathf.DeltaAngle(0, transform.rotation.eulerAngles.y); 
-    _movingRight = (!_movingRight || !(yRotation >= lTarget)) && (!_movingRight && yRotation <= rTarget || _movingRight);
+    float currentZ = transform.localEulerAngles.z;
+    _movingRight = (!_movingRight || !(currentZ >= rTarget)) && (!_movingRight && currentZ <= lTarget || _movingRight);
     Vector3 direction = _movingRight ? Vector3.up : -Vector3.up;
     transform.RotateAround(turnPoint.position, direction, speed * Time.deltaTime);
   }
+
+
 
   public void Hack(int hackingDuration) {
     StartCoroutine(DuringHack(hackingDuration));
