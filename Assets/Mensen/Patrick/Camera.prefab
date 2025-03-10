@@ -349,7 +349,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7723088711274877441}
-  - component: {fileID: 2765655512154155837}
   m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
@@ -372,20 +371,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6732764523746274186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2765655512154155837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947573874817897612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbe9fe32ad35134698b994e88b2f7e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCamera: {fileID: 3150141911345267193}
-  frustumMaterial: {fileID: 2100000, guid: c5485f6542b108446b394462d850cc57, type: 2}
 --- !u!1 &6723816989615026895
 GameObject:
   m_ObjectHideFlags: 0

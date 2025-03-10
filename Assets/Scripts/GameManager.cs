@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
   public int maxBreakableGlass;
   public Object brokenGlass;
   public static GameManager Instance;
-  public List<Quaternion> safeNumberRotations;
+  public List<Vector3> safeNumberRotations;
   public Player player { get; private set; }
 
   private void Awake() {

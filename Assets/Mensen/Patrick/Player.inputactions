@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "OpenSafe",
+                    "type": "Button",
+                    "id": "3f2f249b-d33d-46e7-a5e0-b39bcb2718b2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -256,6 +265,17 @@
                     "action": "Safe",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "db67c51a-18bf-476c-a60f-be558fbf4336",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenSafe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

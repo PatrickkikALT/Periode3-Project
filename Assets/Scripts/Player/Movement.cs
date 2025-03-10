@@ -17,8 +17,7 @@ public class Movement : MonoBehaviour
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
-        if (!ctx.performed) return;
-
+        if (!ctx.performed || !canMove) return;
         if (onGround) {
             jumping = true;
             _rb.velocity = new Vector3(0, jumpStrength, 0);

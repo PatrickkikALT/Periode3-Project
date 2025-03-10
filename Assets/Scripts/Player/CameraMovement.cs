@@ -35,7 +35,7 @@ public class CameraMovement : MonoBehaviour
 
   public void Interact(InputAction.CallbackContext ctx) {
     if (!ctx.started) return;
-    Physics.Raycast(cameraHolder.position, cameraHolder.forward, out RaycastHit hitInfo, 10f);
+    Physics.Raycast(cameraHolder.position, cameraHolder.forward, out RaycastHit hitInfo, 3f);
     if (hitInfo.collider == null) return;
     if (hitInfo.collider.TryGetComponent(out Item item)) {
       item.PickUp();
