@@ -192,6 +192,7 @@ MonoBehaviour:
   currentNum: 0
   door: {fileID: 3233227222439961428}
   doorTarget: {fileID: 4671441759032857573}
+  amountToRotate: 0
 --- !u!65 &2720305627220308668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1499,7 +1500,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6140803838599104420}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0

@@ -99,7 +99,7 @@ public class DestructibleObject : MonoBehaviour
           continue;
         }
 
-        //cut points
+        //cut points with use of the ternaray operator
         var singleIndex = sideB == sideC ? 0 : sideA == sideC ? 1 : 2;
 
         ray1.origin = original.vertices[triangles[j + singleIndex]];

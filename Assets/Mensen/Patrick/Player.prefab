@@ -268,7 +268,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 889.58
+  m_Intensity: 219.93857
   m_Range: 305.72
   m_SpotAngle: 80.06
   m_InnerSpotAngle: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 889.58
+  m_Intensity: 219.93857
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0.03
@@ -627,6 +627,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  canMove: 1
+  stairLayer:
+    serializedVersion: 2
+    m_Bits: 0
   jumping: 0
   fallVel: 1
   jumpStrength: 5
@@ -749,7 +753,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2787090894565958038}
         m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
-        m_MethodName: PickUp
+        m_MethodName: Interact
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -777,6 +781,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0c547115-46dc-4272-b4f8-efcc771b7374
     m_ActionName: Movement/Open Inventory[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2d4df4da-de5b-400e-ab60-1b67d283f752
+    m_ActionName: Movement/Safe[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f2f249b-d33d-46e7-a5e0-b39bcb2718b2
+    m_ActionName: Movement/OpenSafe[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 725fe1b1-d941-4085-bada-6ee3c99205f9
+    m_ActionName: Movement/Quit[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -795,6 +811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 7526401043318120046}
+  youLost: {fileID: 0}
+  moneyText: {fileID: 0}
 --- !u!114 &2327094215980477847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,6 +828,7 @@ MonoBehaviour:
   items: []
   maxItems: 20
   inventoryPanel: {fileID: 0}
+  inventoryContent: {fileID: 0}
 --- !u!114 &8224991777467201254
 MonoBehaviour:
   m_ObjectHideFlags: 0

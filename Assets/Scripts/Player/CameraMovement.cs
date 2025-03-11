@@ -37,17 +37,8 @@ public class CameraMovement : MonoBehaviour
     if (!ctx.started) return;
     Physics.Raycast(cameraHolder.position, cameraHolder.forward, out RaycastHit hitInfo, 3f);
     if (hitInfo.collider == null) return;
-    if (hitInfo.collider.TryGetComponent(out Item item)) {
-      item.PickUp();
-    }
-    if (hitInfo.collider.TryGetComponent(out BreakableGlass glass)) {
-      glass.Break();
-    }
-    if (hitInfo.collider.TryGetComponent(out Door door)) {
-      door.OpenDoor();
-    }
-    if (hitInfo.collider.TryGetComponent(out Safe safe)) {
-      safe.OpenSafe();
+    if (hitInfo.collider.TryGetComponent(out IInteractable interactable)) {
+      interactable.Interact();
     }
   }
 }

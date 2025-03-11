@@ -7,20 +7,21 @@ using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Safe : MonoBehaviour
+public class Safe : MonoBehaviour, IInteractable
 {
   [SerializeField] private Transform cameraTarget;
   private Vector3 _previousPosition;
   private GameObject _camera;
-  private bool _isUsingSafe;
-  private InputAction _action;
+  private InputAction _turnAction;
   private InputAction _spaceAction;
+  private InputAction _exitAction;
   [SerializeField] private GameObject turnDial;
   [SerializeField] private int buffer;
   [SerializeField] private int[] code;
   [SerializeField] private int currentNum = 0;
   [SerializeField] private GameObject door;
   [SerializeField] private Transform doorTarget;
+  [SerializeField] private int amountToRotate;
 
   private void Start() {
     code = new int[] {
@@ -28,48 +29,63 @@ public class Safe : MonoBehaviour
     };
     _camera = Camera.main.gameObject;
   }
+
+  public void Interact() {
+    OpenSafe();
+  }
   public void OpenSafe() {
     _previousPosition = _camera.transform.position;
     StartCoroutine(LerpToTarget(cameraTarget, 1 * Time.deltaTime));
     GameManager.Instance.player.GetComponent<CameraMovement>().canMove = false;
     GameManager.Instance.player.GetComponent<Movement>().canMove = false;
-    _action = GameManager.Instance.player.GetComponent<PlayerInput>().actions["Safe"];
-    _action.performed += SafeInput;
+    _turnAction = GameManager.Instance.player.GetComponent<PlayerInput>().actions["Safe"];
+    _turnAction.performed += SafeInput;
     _spaceAction = GameManager.Instance.player.GetComponent<PlayerInput>().actions["OpenSafe"];
-    _spaceAction.performed += ConfirmNumber; 
-    _isUsingSafe = true;
+    _spaceAction.performed += ConfirmNumber;
+    _exitAction = GameManager.Instance.player.GetComponent<PlayerInput>().actions["Quit"];
+    _exitAction.performed += CloseSafe;
+    GameManager.Instance.isPlayerUsingSafe = true;
     cameraTarget.GetComponent<Light>().enabled = true;
   }
 
+  private void CloseSafe(InputAction.CallbackContext ctx) {
+    StopAllCoroutines();
+    GameManager.Instance.player.GetComponent<CameraMovement>().canMove = true;
+    GameManager.Instance.player.GetComponent<Movement>().canMove = true;
+    _turnAction.performed -= SafeInput;
+    _turnAction = null;
+    _spaceAction.performed -= ConfirmNumber;
+    _spaceAction = null;
+    _exitAction.performed -= CloseSafe;
+    _exitAction = null;
+    cameraTarget.GetComponent<Light>().enabled = false;
+    GameManager.Instance.isPlayerUsingSafe = false;
+    _camera.transform.position = _previousPosition;
+  }
+  
   public void FinishSafe() {
     GameManager.Instance.player.GetComponent<CameraMovement>().canMove = true;
     GameManager.Instance.player.GetComponent<Movement>().canMove = true;
     StopAllCoroutines();
     StartCoroutine(LerpDoor());
-    _camera.transform.position = _previousPosition;
-    _action.performed -= SafeInput;
-    _action = null;
+    _turnAction.performed -= SafeInput;
+    _turnAction = null;
     _spaceAction.performed -= ConfirmNumber;
     _spaceAction = null;
     cameraTarget.GetComponent<Light>().enabled = false;
+    GameManager.Instance.isPlayerUsingSafe = false;
+    _camera.transform.position = _previousPosition;
   }
-
-  private bool IsInRangeWithBuffer(int valueToCompare, int target) {
-    int adjustedMin = target - buffer;
-    int adjustedMax = target + buffer;
-    return (valueToCompare >= adjustedMin && valueToCompare <= adjustedMax) || valueToCompare == target;
-  }
-
+  
   private void SafeInput(InputAction.CallbackContext ctx) {
-    float rotationAmount = Mathf.Approximately(ctx.ReadValue<float>(), -1) ? 45f : -45f;
+    float rotationAmount = Mathf.Approximately(ctx.ReadValue<float>(), -1) ? amountToRotate : -amountToRotate;
     Quaternion currentRotation = turnDial.transform.rotation;
     Quaternion newRotation = Quaternion.Euler(rotationAmount, 0, 0) * currentRotation;
     turnDial.transform.rotation = newRotation;
-    float currentXAngle = NormalizeAngle(turnDial.transform.eulerAngles.x);
   }
+  
   private void ConfirmNumber(InputAction.CallbackContext ctx) {
-    if (IsInRangeWithBuffer(Mathf.RoundToInt(NormalizeAngle(turnDial.transform.eulerAngles.x)), 
-                            Mathf.RoundToInt(GameManager.Instance.safeNumberRotations[code[currentNum] - 1].x))) {
+    if (IsInRangeWithBuffer(Mathf.RoundToInt(NormalizeAngle(turnDial.transform.eulerAngles.x)), Mathf.RoundToInt(GameManager.Instance.safeNumberRotations[code[currentNum] - 1].x), buffer)) {
       print("Met rotation requirement");
       currentNum++;
       if (currentNum == code.Length) {
@@ -79,14 +95,11 @@ public class Safe : MonoBehaviour
     }
     else {
       print($"Does not meet rotation requirement {GameManager.Instance.safeNumberRotations[code[currentNum] - 1].x}");
+      currentNum = 0;
     }
   }
   
-  private float NormalizeAngle(float angle) {
-    return (angle + 180) % 360 - 180;
-  }
-
-
+  #region Lerp Coroutines
   private IEnumerator LerpToTarget(Transform to, float t) {
     while (transform.position != to.position) {
       _camera.transform.position = Vector3.Lerp(_camera.transform.position, to.position, t);
@@ -100,4 +113,17 @@ public class Safe : MonoBehaviour
       yield return null;
     }
   }
+  #endregion
+  
+  #region Static Calculation Methods
+  private static float NormalizeAngle(float angle) {
+    return (angle + 180) % 360 - 180;
+  }
+
+  private static bool IsInRangeWithBuffer(int valueToCompare, int target, int b) {
+    int adjustedMin = target - b;
+    int adjustedMax = target + b;
+    return (valueToCompare >= adjustedMin && valueToCompare <= adjustedMax) || valueToCompare == target;
+  }
+  #endregion
 }

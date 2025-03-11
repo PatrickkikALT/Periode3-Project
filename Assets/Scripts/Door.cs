@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IInteractable
 {
   private bool _opened;
   private Quaternion _openTarget, _closeTarget;
@@ -13,7 +13,11 @@ public class Door : MonoBehaviour
     _closeTarget = transform.rotation;
   }
 
-  public void OpenDoor() {
+  public void Interact() {
+    OpenDoor();
+  }
+
+  private void OpenDoor() {
     if (!_opened) {
       StopAllCoroutines();
       print($"Target rotation {_openTarget.eulerAngles}");

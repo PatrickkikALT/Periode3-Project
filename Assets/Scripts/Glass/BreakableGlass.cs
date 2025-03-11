@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class BreakableGlass : MonoBehaviour
+public class BreakableGlass : MonoBehaviour, IInteractable
 {
   [SerializeField] private SoundDetector.Severity severity;
   private Rigidbody _rb;
   private Object _brokenGlass;
 
 
+  public void Interact() {
+    Break();
+  }
   private void Start() {
     _brokenGlass = GameManager.Instance.brokenGlass;
     _rb = GetComponent<Rigidbody>();

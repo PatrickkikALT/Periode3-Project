@@ -63,6 +63,7 @@ public class InventoryManager : MonoBehaviour {
 	public ItemSO[] GetItems() => items.ToArray();
 
 	public void OpenInventoryUI(InputAction.CallbackContext ctx) {
+		if (GameManager.Instance.isPlayerUsingSafe) return;
 		GameManager.Instance.player.GetComponent<CameraMovement>().canMove = false;
 		inventoryPanel.SetActive(!inventoryPanel.activeSelf);
 

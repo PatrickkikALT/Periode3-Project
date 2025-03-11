@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
   public static GameManager Instance;
   public List<Vector3> safeNumberRotations;
   public Player player { get; private set; }
+  public bool isPlayerUsingSafe;
 
   private void Awake() {
     if (Instance == null) Instance = this; else Destroy(this);

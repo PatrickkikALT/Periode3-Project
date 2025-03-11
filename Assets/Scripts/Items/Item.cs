@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IPickupable
+public class Item : MonoBehaviour, IPickupable, IInteractable
 {
 	public ItemSO item;
 	public void PickUp() {
@@ -12,6 +12,10 @@ public class Item : MonoBehaviour, IPickupable
 			return;
 		}
 		Destroy(gameObject);
+	}
+
+	public void Interact() {
+		PickUp();
 	}
 
 	public int GetWorth() {
