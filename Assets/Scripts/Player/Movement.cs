@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     private Rigidbody _rb;
     public bool canMove = true;
     [SerializeField] private LayerMask stairLayer;
+    private Transform _camera;
     private bool _isTouchingStairs => Physics.OverlapSphereNonAlloc(transform.position, overlapSphereSize, new Collider[2], stairLayer) > 0;
     public void OnMove(InputAction.CallbackContext ctx) {
         _input = ctx.ReadValue<Vector2>();
@@ -25,6 +26,7 @@ public class Movement : MonoBehaviour
     }
     private void Start() {
         _rb = GetComponent<Rigidbody>();
+        _camera = Camera.main.transform;
     }
 
     private void Update() {

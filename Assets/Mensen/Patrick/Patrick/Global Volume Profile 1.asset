@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 4.17
+    m_Value: 1.58
   multiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -89,6 +89,10 @@ MonoBehaviour:
   includeSunInBaking:
     m_OverrideState: 1
     m_Value: 0
+  m_SkyVersion: 1
+  m_ObsoleteEarthPreset:
+    m_OverrideState: 1
+    m_Value: 1
   type:
     m_OverrideState: 1
     m_Value: 1
@@ -176,10 +180,6 @@ MonoBehaviour:
   numberOfBounces:
     m_OverrideState: 1
     m_Value: 3
-  m_SkyVersion: 1
-  m_ObsoleteEarthPreset:
-    m_OverrideState: 1
-    m_Value: 1
 --- !u!114 &-2738645183656370088
 MonoBehaviour:
   m_ObjectHideFlags: 3
