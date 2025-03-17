@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb91171210fef094cad5d55a4760a91c, type: 3}
+  m_Name: Painting 4
+  m_EditorClassIdentifier: 
+  worth: 100
+  weight: 0
+  obj: {fileID: 8363492740069837577, guid: 5e2e933ea7ee77bc6872f01e9fecd8e1, type: 3}
+  sprite: {fileID: 0}
