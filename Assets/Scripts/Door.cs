@@ -33,7 +33,7 @@ public class Door : MonoBehaviour, IInteractable
   }
 
   public IEnumerator DoorAnimation(Quaternion target) {
-    while (Quaternion.Angle(transform.rotation, target) > 1f) {
+    while (Quaternion.Angle(transform.rotation, target) > 0.5f) {
       transform.rotation = Quaternion.Lerp(transform.rotation, target, Time.deltaTime * 2f);
       yield return null;
     }

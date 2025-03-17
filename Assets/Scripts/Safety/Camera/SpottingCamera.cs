@@ -23,8 +23,14 @@ public class SpottingCamera : MonoBehaviour
   private Coroutine _current;
   [SerializeField] private int secondsUntilDetection;
   private bool _canMove = true;
-
   
+  [SerializeField] private Camera camera;
+  [SerializeField] private float length = 10f;
+  [SerializeField] private int segments = 20;
+
+  [SerializeField] private MeshFilter meshFilter;
+
+  #region Detection
   private void FixedUpdate()
   {
     if (!hasSpottedPlayer && _canMove && doesTurn) {
@@ -58,16 +64,16 @@ public class SpottingCamera : MonoBehaviour
     print("Detected, you lost");
     _spottedPlayer.GetComponent<Player>().Lose();
   }
-     
+  #endregion
+  #region Movement
   private void HandleCameraTurn() {
     float currentZ = transform.localEulerAngles.z;
     _movingRight = (!_movingRight || !(currentZ >= rTarget)) && (!_movingRight && currentZ <= lTarget || _movingRight);
     Vector3 direction = _movingRight ? Vector3.up : -Vector3.up;
     transform.RotateAround(turnPoint.position, direction, speed * Time.deltaTime);
   }
-
-
-
+  #endregion
+  #region Hacking
   public void Hack(int hackingDuration) {
     StartCoroutine(DuringHack(hackingDuration));
   }
@@ -77,4 +83,56 @@ public class SpottingCamera : MonoBehaviour
     yield return new WaitForSeconds(hackingDuration);
     _canMove = true;
   }
+  #endregion
+  #region Sight Renderer
+
+  private void RenderSight()
+  {
+    Mesh mesh = new Mesh();
+    
+    Vector3[] vertices = new Vector3[segments + 2];
+    Vector2[] uv = new Vector2[vertices.Length];
+    int[] triangles = new int[segments * 3];
+    
+    float angle = GetComponent<Camera>().fieldOfView * Mathf.Deg2Rad / 2f;
+    float aspect = GetComponent<Camera>().aspect;
+
+    Vector3 origin = GetComponent<Camera>().transform.position;
+    Vector3 forward = GetComponent<Camera>().transform.forward;
+    Vector3 right = GetComponent<Camera>().transform.right;
+    Vector3 up = GetComponent<Camera>().transform.up;
+    
+    vertices[0] = origin + forward * length;
+    uv[0] = new Vector2(0.5f, 0f); 
+    
+    for (int i = 0; i < segments; i++)
+    {
+      float theta = i * Mathf.PI * 2f / segments;
+      float x = Mathf.Sin(theta) * Mathf.Tan(angle) * length * aspect;
+      float y = Mathf.Cos(theta) * Mathf.Tan(angle) * length;
+      vertices[i + 1] = origin + forward * length;
+      uv[i + 1] = new Vector2(x, y);
+
+      if (i < segments - 1)
+      {
+        triangles[i * 3] = 0;
+        triangles[i * 3 + 1] = i + 1;
+        triangles[i * 3 + 2] = i + 2;
+      }
+      else
+      {
+        triangles[i * 3] = 0;
+        triangles[i * 3 + 1] = i + 1;
+        triangles[i * 3 + 2] = 1;
+      }
+    }
+
+
+    mesh.vertices = vertices;
+    mesh.uv = uv;
+    mesh.triangles = triangles;
+
+    meshFilter.mesh = mesh;
+  }
+  #endregion
 }

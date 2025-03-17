@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -22,6 +23,7 @@ public class Safe : MonoBehaviour, IInteractable
   [SerializeField] private GameObject door;
   [SerializeField] private Transform doorTarget;
   [SerializeField] private int amountToRotate;
+  private bool _hasOpenedSafe;
 
   private void Start() {
     code = new int[] {
@@ -31,6 +33,7 @@ public class Safe : MonoBehaviour, IInteractable
   }
 
   public void Interact() {
+    if (_hasOpenedSafe) return;
     OpenSafe();
   }
   public void OpenSafe() {
@@ -72,9 +75,12 @@ public class Safe : MonoBehaviour, IInteractable
     _turnAction = null;
     _spaceAction.performed -= ConfirmNumber;
     _spaceAction = null;
+    _exitAction.performed -= CloseSafe;
+    _exitAction = null;
     cameraTarget.GetComponent<Light>().enabled = false;
     GameManager.Instance.isPlayerUsingSafe = false;
     _camera.transform.position = _previousPosition;
+    
   }
   
   private void SafeInput(InputAction.CallbackContext ctx) {

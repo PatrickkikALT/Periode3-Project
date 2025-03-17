@@ -55,6 +55,7 @@ public class Settings : MonoBehaviour
 #if UNITY_EDITOR
         Debug.LogWarning("Game started in Minimized, resolutions will be broken.");
 #endif
+
       }
     }
 

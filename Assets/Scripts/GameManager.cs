@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -18,9 +17,10 @@ public class GameManager : MonoBehaviour
   private void Awake() {
     if (Instance == null) Instance = this; else Destroy(this);
     brokenGlass = Resources.Load("BrokenWindow");
+    player = FindObjectOfType<Player>();
   }
   private void Start() {
-    player = FindObjectOfType<Player>();
+    
     StartCoroutine(CleanList());
   }
 

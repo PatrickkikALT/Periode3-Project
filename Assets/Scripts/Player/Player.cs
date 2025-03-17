@@ -11,22 +11,22 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject youLost;
     [SerializeField] private TMP_Text moneyText;
     private int _money;
-    public int money
+    public int Money
     {
-        get {
-            return _money;
-        }
+        get => _money;
         set {
             _money = value;
             UpdateMoneyText();
         }
     }
 
-    public void UpdateMoneyText() => moneyText.text = $"${money}";
-    public void AddMoney(int value) => money += value;
+    public List<Upgrade> boughtUpgrades = new();
+
+    public void UpdateMoneyText() => moneyText.text = $"${Money}";
+    public void AddMoney(int value) => Money += value;
     public bool RemoveMoney(int value) {
-        if (money - value < 0) return false;
-        money -= value;
+        if (Money - value < 0) return false;
+        Money -= value;
         return true;
     }
     public void Lose() {
@@ -39,5 +39,10 @@ public class Player : MonoBehaviour {
     
     public void ToggleFlashlight(InputAction.CallbackContext ctx) {
         flashlight.enabled = !flashlight.enabled;
+    }
+
+    private void Start()
+    {
+        Money = Save.instance.saveData.money;
     }
 }
