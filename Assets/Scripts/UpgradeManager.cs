@@ -13,7 +13,4 @@ public class UpgradeManager : MonoBehaviour
         upgrade.upgradeManager = this;
       }  
     }
-    public void AddUpgrade(int id) {
-        upgrades.ElementAt(id).Key.AddUpgrade();
-    }
 }

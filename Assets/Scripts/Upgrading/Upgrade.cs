@@ -14,7 +14,12 @@ public class Upgrade : MonoBehaviour, IUpgrade
   public void AddUpgrade()
   {
     if (CheckIfUpgradesMet()) {
-      //do upgrade things
+      if (GameManager.Instance.player.RemoveMoney(cost)) {
+        upgradeManager.upgrades[this] = true;
+      }
+      else {
+        print($"Can't afford, cost is {cost}");
+      }
     }
     else {
       print($"Missing upgrades");

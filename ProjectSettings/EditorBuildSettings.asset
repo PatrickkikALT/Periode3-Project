@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Mensen/Patrick/Patrick.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/Main Game.unity
+    guid: c7884b576f19e3e44a853aece25eb8ae
+  - enabled: 1
+    path: Assets/Main Menu.unity
+    guid: c94d99f8602285f44ba5b9efde0ea412
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8c1bf3b9ec1cfae4ba73a6f8a41b80c2,
       type: 3}

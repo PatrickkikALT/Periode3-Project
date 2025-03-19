@@ -5,11 +5,13 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     [SerializeField] private Light flashlight;
     [SerializeField] private GameObject youLost;
     [SerializeField] private TMP_Text moneyText;
+    [SerializeField] private PoliceLight policeLight;
     private int _money;
     public int Money
     {
@@ -35,6 +37,13 @@ public class Player : MonoBehaviour {
         GetComponent<CameraMovement>().canMove = false;
         GetComponent<Movement>().canMove = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        policeLight.gameObject.SetActive(true);
+        StartCoroutine(WaitForLoss());
+    }
+
+    private IEnumerator WaitForLoss() {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Main Menu");
     }
     
     public void ToggleFlashlight(InputAction.CallbackContext ctx) {

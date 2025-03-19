@@ -3498,6 +3498,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10000029, y: 4.003305, z: 2}
   m_Center: {x: 0.0000000018626451, y: 0, z: 0.000000059604645}
+--- !u!20 &580696911 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4359995769910882292, guid: 7f2abb1a9eaa8374c972a16b6a8a8cea,
+    type: 3}
+  m_PrefabInstance: {fileID: 925097584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &582423759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5021,11 +5027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 3893349432605313654, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
+    - target: {fileID: 1175613906424211592, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
         type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 580696911}
     - target: {fileID: 8122360809371915749, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5065,21 +5071,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122360809371915749, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122360809371915749, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122360809371915749, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8122360809371915749, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
         type: 3}
@@ -5140,11 +5131,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122360809371915749, guid: 6e3b8b3d643e91f4ca4d84ab11681170,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8225,7 +8211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
+  m_SendPointerHoverToParent: 0
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}

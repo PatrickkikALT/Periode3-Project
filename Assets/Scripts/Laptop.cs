@@ -39,7 +39,7 @@ public class Laptop : MonoBehaviour, IInteractable
 
 
   private IEnumerator LerpToTarget(Transform to, float t) {
-    while (transform.position != to.position) {
+    while (_camera.transform.position != to.position) {
       _camera.transform.position = Vector3.Lerp(_camera.transform.position, to.position, t);
       _camera.transform.rotation = Quaternion.Lerp(_camera.transform.rotation, to.rotation, t);
       yield return null;

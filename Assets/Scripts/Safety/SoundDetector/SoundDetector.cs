@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using UnityEngine;
+using UnityEngine.UI;
 
 //TODO: Balancing + Start reducing counter if there hasn't been audio in a while.
 public class SoundDetector : MonoBehaviour
@@ -13,27 +15,61 @@ public class SoundDetector : MonoBehaviour
         NOTHING = 0
     }
     private int _counter;
+
+    private int Counter {
+        get {
+            return _counter;
+        }
+        set {
+            _counter = value;
+            UpdateSoundIcon(value);
+            if (value >= counterUntilAlarm) {
+                Alarm();
+            }
+        }
+    }
     [SerializeField] private Player player;
     public static SoundDetector Instance;
+
+    [SerializeField] private Image soundIcon;
+
+    [SerializeField] private Sprite[] sprites;
+
+    [SerializeField] private int counterUntilAlarm;
 
     private void Awake() {
         if (Instance == null) Instance = this;
     }
 
+    void Start()
+    {
+        StartCoroutine(ReduceCounter());
+    }
+
+    private void UpdateSoundIcon(int value) {
+        soundIcon.sprite = value switch
+        {
+            <= 1 => sprites[0],
+            <= 3 => sprites[1],
+            <= 6 => sprites[2],
+            _ => sprites[3],
+        };
+        print($"Set soundIcon to value {value}");
+    } 
+
     public void ReceiveSound(GameObject sender, Severity severity) {
-        if (sender.layer != 8) return;
         float soundSeverity = GetSoundSeverity(severity, Vector3.Distance(transform.position, sender.transform.position));
         switch (soundSeverity) {
             case <= 1:
-                return;
+                break;
             case <= 3:
-                _counter++;
+                Counter++;
                 break;
             case <= 6:
-                _counter += 4;
+                Counter += 4;
                 break;
             default:
-                Alarm();
+                Counter += 6;
                 break;
         }
     }
@@ -53,5 +89,14 @@ public class SoundDetector : MonoBehaviour
     private void Alarm() {
         print("Alarm went off");
         player.Lose();
+    }
+
+    private IEnumerator ReduceCounter() {
+        while (true) {
+            yield return new WaitForSeconds(10);
+            if (Counter - 1 >= 0) {
+                Counter -= 1;
+            }
+        }
     }
 }
