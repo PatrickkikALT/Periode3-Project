@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-//TODO: Make camera move to aim at the player instead of just stopping.
-//Tried transform.LookAt but prefab isn't pointing forward correctly, don't think this will be an issue once a proper model is added.
 public class SpottingCamera : MonoBehaviour
 {
   [Header("Camera Movement")]
@@ -23,12 +21,7 @@ public class SpottingCamera : MonoBehaviour
   private Coroutine _current;
   [SerializeField] private int secondsUntilDetection;
   private bool _canMove = true;
-  
-  [SerializeField] private float length = 10f;
-  [SerializeField] private int segments = 20;
-
-  [SerializeField] private MeshFilter meshFilter;
-
+  [SerializeField] private GameObject sight;
   #region Detection
   private void FixedUpdate()
   {
@@ -75,12 +68,14 @@ public class SpottingCamera : MonoBehaviour
   #region Hacking
   public void Hack(int hackingDuration) {
     StartCoroutine(DuringHack(hackingDuration));
+    sight.SetActive(false);
   }
 
   private IEnumerator DuringHack(int hackingDuration) {
     _canMove = false;
     yield return new WaitForSeconds(hackingDuration);
     _canMove = true;
+    sight.SetActive(true);
   }
   #endregion
 }

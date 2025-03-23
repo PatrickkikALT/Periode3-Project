@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour {
 	public static InventoryManager Instance;
 	[SerializeField] private GameObject inventoryPanel;
 	[SerializeField] private GameObject inventoryContent;
+	public int maxWeight;
 	private void Start() {
 		if (Instance == null) Instance = this;
 	}
@@ -21,10 +22,8 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public bool AddItem(ItemSO item, int weight) {
-		if (items.Count + weight > maxItems) return false;
-		for (int i = 0; i <= weight; i++) {
-			items.Add(item);
-		}
+		if (item.weight > maxWeight) return false;
+		items.Add(item);
 		return true;
 	}
 

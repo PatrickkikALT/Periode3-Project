@@ -7,6 +7,7 @@ public class Door : MonoBehaviour, IInteractable
 {
   private bool _opened;
   private Quaternion _openTarget, _closeTarget;
+  [SerializeField] private SoundDetector.Severity severity = SoundDetector.Severity.QUIET;
 
   private void Start() {
     _openTarget = transform.rotation * Quaternion.Euler(0, -90, 0);
@@ -18,6 +19,9 @@ public class Door : MonoBehaviour, IInteractable
   }
 
   private void OpenDoor() {
+    if (SoundDetector.Instance != null) {
+      SoundDetector.Instance.ReceiveSound(gameObject, severity);
+    }
     if (!_opened) {
       StopAllCoroutines();
       print($"Target rotation {_openTarget.eulerAngles}");

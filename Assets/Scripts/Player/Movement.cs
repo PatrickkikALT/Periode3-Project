@@ -7,14 +7,14 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    private Vector2 _input;
+    public Vector2 input;
     private Rigidbody _rb;
     public bool canMove = true;
     [SerializeField] private LayerMask stairLayer;
     private Transform _camera;
     private bool _isTouchingStairs => Physics.OverlapSphereNonAlloc(transform.position, overlapSphereSize, new Collider[2], stairLayer) > 0;
     public void OnMove(InputAction.CallbackContext ctx) {
-        _input = ctx.ReadValue<Vector2>();
+        input = ctx.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
 
     private void Update() {
         if (!canMove) return;
-        Vector3 dir = transform.TransformDirection(new Vector3(_input.x, 0, _input.y));
+        Vector3 dir = transform.TransformDirection(new Vector3(input.x, 0, input.y));
         _rb.velocity = new Vector3(dir.x * speed, _rb.velocity.y, dir.z * speed);
         if (_isTouchingStairs) {
             _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z) * speed;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -5,9 +6,14 @@ using UnityEngine;
 
 public class HackCameras : MonoBehaviour, IAbility
 {
-  public Ability scriptableObject { get; set; }
+    public Ability scriptableObject { get; set; }
 
-  public void UseAbility() {
+    [SerializeField] private Ability so;
+
+    void Start(){
+      scriptableObject = so;
+    }
+    public void UseAbility() {
     Collider[] col = new Collider[10];
     Physics.OverlapSphereNonAlloc(transform.position, scriptableObject.radius, col);
     if (col.Length > 0) {

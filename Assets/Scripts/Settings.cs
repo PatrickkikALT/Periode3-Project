@@ -9,20 +9,14 @@ public class Settings : MonoBehaviour
 {
   [SerializeField] private AudioMixer mixer;
   [SerializeField] private TMP_Text sfxText, musicText;
-  
-  float Remap(float value, float min1, float max1, float min2, float max2) 
-  {
-    return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
-  }
+
   public void ChangeSfx(float value) {
-    int i = Mathf.RoundToInt(value);
     mixer.SetFloat("Sfx", Mathf.Log10(value) * 20);
-    sfxText.text = $"{i}";
+    sfxText.text = $"{Mathf.RoundToInt(value * 100)}";
   }
   public void ChangeMusic(float value) {
-    int i = Mathf.RoundToInt(value);
     mixer.SetFloat("Music",Mathf.Log10(value) * 20);
-    musicText.text = $"{i}";
+    musicText.text = $"{Mathf.RoundToInt(value * 100)}";
   }
 
   public void SetFPS(string value) {

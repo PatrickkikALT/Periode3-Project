@@ -6,12 +6,14 @@ using UnityEngine;
 public class Item : MonoBehaviour, IPickupable, IInteractable
 {
 	public ItemSO item;
-	public void PickUp() {
+	public bool PickUp() {
+		if (item.weight > InventoryManager.Instance.maxWeight) return false;
 		bool result = InventoryManager.Instance.AddItem(item, item.weight);
 		if (!result) {
-			return;
+			return false;
 		}
-		Destroy(gameObject);
+		Destroy(gameObject, 0.01f);
+		return true;
 	}
 
 	public void Interact() {

@@ -84,10 +84,10 @@ public class Safe : MonoBehaviour, IInteractable
   }
   
   private void SafeInput(InputAction.CallbackContext ctx) {
-    float rotationAmount = Mathf.Approximately(ctx.ReadValue<float>(), -1) ? amountToRotate : -amountToRotate;
-    Quaternion currentRotation = turnDial.transform.rotation;
+    float rotationAmount = Mathf.Approximately(ctx.ReadValue<float>(), -1) ? -amountToRotate : amountToRotate;
+    Quaternion currentRotation = turnDial.transform.localRotation;
     Quaternion newRotation = Quaternion.Euler(rotationAmount, 0, 0) * currentRotation;
-    turnDial.transform.rotation = newRotation;
+    turnDial.transform.localRotation = newRotation;
   }
   
   private void ConfirmNumber(InputAction.CallbackContext ctx) {

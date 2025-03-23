@@ -7,8 +7,13 @@ public class UpgradeManager : MonoBehaviour
 {
     public Dictionary<Upgrade, bool> upgrades;
 
-    void Start()
-    {
+    public static UpgradeManager Instance;
+
+
+    void Awake() {
+        if (Instance == null) Instance = this; else Destroy(this);
+    }
+    void Start() {
       foreach (Upgrade upgrade in upgrades.Keys) {
         upgrade.upgradeManager = this;
       }  

@@ -30,12 +30,10 @@ public class SoundDetector : MonoBehaviour
     }
     [SerializeField] private Player player;
     public static SoundDetector Instance;
-
     [SerializeField] private Image soundIcon;
-
     [SerializeField] private Sprite[] sprites;
-
     [SerializeField] private int counterUntilAlarm;
+    private bool _canCurrentlyReceiveSound;
 
     private void Awake() {
         if (Instance == null) Instance = this;
@@ -47,7 +45,25 @@ public class SoundDetector : MonoBehaviour
     }
 
     private void UpdateSoundIcon(int value) {
-        soundIcon.sprite = value switch
+        switch (value) {
+            case <= 1:
+                soundIcon.sprite = sprites[0];
+                soundIcon.color = Color.white;
+                break;
+            case <= 3:
+                soundIcon.sprite = sprites[1];
+                soundIcon.color = Color.white;
+                break;
+            case <= 6:
+                soundIcon.sprite = sprites[2];
+                soundIcon.color = Color.red;
+                break;
+            default:
+                soundIcon.color = Color.red;
+                soundIcon.sprite = sprites[3];
+                break;
+        }
+         soundIcon.sprite = value switch
         {
             <= 1 => sprites[0],
             <= 3 => sprites[1],
@@ -58,6 +74,7 @@ public class SoundDetector : MonoBehaviour
     } 
 
     public void ReceiveSound(GameObject sender, Severity severity) {
+        if (!_canCurrentlyReceiveSound) return;
         float soundSeverity = GetSoundSeverity(severity, Vector3.Distance(transform.position, sender.transform.position));
         switch (soundSeverity) {
             case <= 1:
@@ -98,5 +115,16 @@ public class SoundDetector : MonoBehaviour
                 Counter -= 1;
             }
         }
+    }
+
+    public void Hack(int time) {
+        Counter = 0;
+        _canCurrentlyReceiveSound = false;
+        StartCoroutine(DuringHack(time));
+    }
+
+    private IEnumerator DuringHack(int time) {
+        yield return new WaitForSeconds(time);
+        _canCurrentlyReceiveSound = true;
     }
 }
