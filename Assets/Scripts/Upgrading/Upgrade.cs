@@ -16,6 +16,7 @@ public class Upgrade : MonoBehaviour, IUpgrade
     if (CheckIfUpgradesMet()) {
       if (GameManager.Instance.player.RemoveMoney(cost)) {
         upgradeManager.upgrades[this] = true;
+
       }
       else {
         print($"Can't afford, cost is {cost}");

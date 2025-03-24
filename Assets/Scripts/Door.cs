@@ -8,14 +8,21 @@ public class Door : MonoBehaviour, IInteractable
   private bool _opened;
   private Quaternion _openTarget, _closeTarget;
   [SerializeField] private SoundDetector.Severity severity = SoundDetector.Severity.QUIET;
+  public bool locked;
 
   private void Start() {
+    locked = UnityEngine.Random.Range(0, 2) == 1;
     _openTarget = transform.rotation * Quaternion.Euler(0, -90, 0);
     _closeTarget = transform.rotation;
   }
 
   public void Interact() {
-    OpenDoor();
+    if (locked) {
+      Lockpick.Instance.StartLockpick(this);
+    }
+    else {
+      OpenDoor();
+    }
   }
 
   private void OpenDoor() {

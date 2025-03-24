@@ -39,6 +39,7 @@ public class Safe : MonoBehaviour, IInteractable
   public void OpenSafe() {
     _previousPosition = _camera.transform.position;
     StartCoroutine(LerpToTarget(cameraTarget, 1 * Time.deltaTime));
+    GameManager.Instance.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
     GameManager.Instance.player.GetComponent<CameraMovement>().canMove = false;
     GameManager.Instance.player.GetComponent<Movement>().canMove = false;
     _turnAction = GameManager.Instance.player.GetComponent<PlayerInput>().actions["Safe"];

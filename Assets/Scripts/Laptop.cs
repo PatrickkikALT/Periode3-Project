@@ -12,6 +12,7 @@ public class Laptop : MonoBehaviour, IInteractable
 
     private Movement _movement;
     private CameraMovement _camMovement;
+    [SerializeField] private Vector3 buffer;
 
     private void Start() {
       _camera = Camera.main;
@@ -39,7 +40,7 @@ public class Laptop : MonoBehaviour, IInteractable
 
 
   private IEnumerator LerpToTarget(Transform to, float t) {
-    while (_camera.transform.position != to.position) {
+    while (!Mathf.Approximately(_camera.transform.position.x, to.position.x)) {
       _camera.transform.position = Vector3.Lerp(_camera.transform.position, to.position, t);
       _camera.transform.rotation = Quaternion.Lerp(_camera.transform.rotation, to.rotation, t);
       yield return null;

@@ -5970,7 +5970,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4598707313175274171}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
         m_MethodName: SetFPS
         m_Mode: 0
@@ -6113,7 +6113,8 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: e5f1c2cb0e58b324db33f5f774f9d049, type: 2}
   sfxText: {fileID: 7373722568491013964}
   musicText: {fileID: 6295168273522492874}
-  resolutionDropdown: []
+  resolutionDropdown:
+  - {fileID: 1980276098715744538}
   currentResolutionIndex: 0
 --- !u!1 &4648426581938837162
 GameObject:

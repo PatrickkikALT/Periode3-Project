@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &473823273159481037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5359180135227608905}
+  - component: {fileID: 8624761025782345912}
+  m_Layer: 5
+  m_Name: LockpickHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5359180135227608905
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473823273159481037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6990728102278030039}
+  m_Father: {fileID: 5831833412515760320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.5000305, y: 0}
+  m_SizeDelta: {x: 184.84, y: 184.84001}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8624761025782345912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473823273159481037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddcbcab200f1864f80a6c8df4075f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &790491797062485844
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,8 +171,6 @@ GameObject:
   - component: {fileID: 6990728102278030039}
   - component: {fileID: 8479968776047764061}
   - component: {fileID: 796864969916566043}
-  - component: {fileID: 6615027041177117925}
-  - component: {fileID: 4271876711088902364}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -145,11 +192,11 @@ RectTransform:
   m_Children:
   - {fileID: 9058659789855907151}
   - {fileID: 5515371711145870970}
-  m_Father: {fileID: 5831833412515760320}
+  m_Father: {fileID: 5359180135227608905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -440.63184, y: -247.85544}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8479968776047764061
@@ -190,101 +237,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6615027041177117925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2200110349912100916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ddcbcab200f1864f80a6c8df4075f47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4271876711088902364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2200110349912100916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8c1bf3b9ec1cfae4ba73a6f8a41b80c2,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d85420a9-cfbc-4b7c-a29f-37868f39682d
-    m_ActionName: Movement/WASD[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cbaa5095-4f01-436c-903f-711fa6a36042
-    m_ActionName: Movement/Camera[/Mouse/delta/up,/Mouse/delta/down,/Mouse/delta/left,/Mouse/delta/right]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0129caca-0589-4e2f-b62b-a5330d6f8738
-    m_ActionName: Movement/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6615027041177117925}
-        m_TargetAssemblyTypeName: Lockpick, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7722ddf8-52cd-486c-9da1-45ee98d6a971
-    m_ActionName: Lockpick/Enter[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6a6bd6f5-9d42-4ffe-92f3-950696c02ffc
-    m_ActionName: Movement/Toggle Flashlight[/Keyboard/f]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 269280a6-e39e-412e-aeba-e7c23c47f950
-    m_ActionName: Movement/Pick Up[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0c547115-46dc-4272-b4f8-efcc771b7374
-    m_ActionName: Movement/Open Inventory[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2d4df4da-de5b-400e-ab60-1b67d283f752
-    m_ActionName: Movement/Safe[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3f2f249b-d33d-46e7-a5e0-b39bcb2718b2
-    m_ActionName: Movement/OpenSafe[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 725fe1b1-d941-4085-bada-6ee3c99205f9
-    m_ActionName: Movement/Quit[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Lockpick
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &2229380748778782537
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +479,7 @@ RectTransform:
   m_Children:
   - {fileID: 4891041106935428312}
   - {fileID: 7344379400784816015}
-  - {fileID: 6990728102278030039}
+  - {fileID: 5359180135227608905}
   - {fileID: 5666981108027056261}
   - {fileID: 5978290450792120354}
   - {fileID: 8505156409539320531}

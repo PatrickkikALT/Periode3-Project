@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public bool AddItem(ItemSO item, int weight) {
-		if (item.weight > maxWeight) return false;
+		if (weight > maxWeight) return false;
 		items.Add(item);
 		return true;
 	}
@@ -31,7 +31,7 @@ public class InventoryManager : MonoBehaviour {
 		if (index < 0 || index >= items.Count) return false;
 		var item = items[index];
 		items.RemoveAt(index);
-		Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, 10f);
+		Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, 5f);
 		if (hit.point != Vector3.zero) {
 			Instantiate(item.obj, hit.point, item.obj.transform.rotation);
 		}
