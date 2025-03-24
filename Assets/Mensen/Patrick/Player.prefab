@@ -240,7 +240,6 @@ MonoBehaviour:
   amount: 0.002
   frequency: 10
   smooth: 10
-  startPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2429577976395247321
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,10 +502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8474ff4e7f86a79a596f757b730af946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.002
+  amount: 0.02
   frequency: 10
   smooth: 10
-  startPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5782971635577209474
 GameObject:
   m_ObjectHideFlags: 0

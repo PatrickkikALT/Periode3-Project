@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
@@ -24,12 +25,18 @@ public class Safe : MonoBehaviour, IInteractable
   [SerializeField] private Transform doorTarget;
   [SerializeField] private int amountToRotate;
   private bool _hasOpenedSafe;
+  [SerializeField] private GameObject postItNoteHolder;
+  [SerializeField] private bool isBigSafe;
 
   private void Start() {
     code = new int[] {
       Random.Range(1, 9), Random.Range(1, 9), Random.Range(1, 9), Random.Range(1, 9),
     };
     _camera = Camera.main.gameObject;
+    if (!isBigSafe) return;
+    for (int i = 0; i < 4; i++) {
+      postItNoteHolder.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = code[i].ToString();
+    } 
   }
 
   public void Interact() {
@@ -68,6 +75,7 @@ public class Safe : MonoBehaviour, IInteractable
   }
   
   public void FinishSafe() {
+    _hasOpenedSafe = true;
     GameManager.Instance.player.GetComponent<CameraMovement>().canMove = true;
     GameManager.Instance.player.GetComponent<Movement>().canMove = true;
     StopAllCoroutines();
@@ -81,7 +89,6 @@ public class Safe : MonoBehaviour, IInteractable
     cameraTarget.GetComponent<Light>().enabled = false;
     GameManager.Instance.isPlayerUsingSafe = false;
     _camera.transform.position = _previousPosition;
-    
   }
   
   private void SafeInput(InputAction.CallbackContext ctx) {
