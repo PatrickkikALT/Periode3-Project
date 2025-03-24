@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour {
 	[SerializeField] private List<ItemSO> items;
@@ -12,6 +13,7 @@ public class InventoryManager : MonoBehaviour {
 	public static InventoryManager Instance;
 	[SerializeField] private GameObject inventoryPanel;
 	[SerializeField] private GameObject inventoryContent;
+	[SerializeField] private TMP_Text infoText;
 	public int maxWeight;
 	private void Start() {
 		if (Instance == null) Instance = this;
@@ -22,9 +24,24 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public bool AddItem(ItemSO item, int weight) {
-		if (weight > maxWeight) return false;
+		if (weight > maxWeight) {
+			StopAllCoroutines();
+			infoText.gameObject.SetActive(true);
+			infoText.text = "This item is too heavy..";
+			StartCoroutine(TextDisappear());
+			return false;
+		}
 		items.Add(item);
 		return true;
+	}
+
+	private IEnumerator TextDisappear() {
+		yield return new WaitForSeconds(1f);
+		var oldLength = infoText.text.Length;
+		for (int i = 0; i < oldLength; i++) {
+			infoText.text = infoText.text[0..^1];
+			yield return new WaitForSeconds(0.05f);
+		}
 	}
 
 	public bool DropItem(int index) {

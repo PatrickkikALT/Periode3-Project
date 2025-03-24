@@ -39,7 +39,6 @@ public class Lockpick : MonoBehaviour
     _spinner.transform.RotateAround(_turnPoint.transform.position, Vector3.forward, speed);
   }
 
-
   public void StartLockpick(Door door)
   {
     _currentDoor = door;
@@ -48,6 +47,11 @@ public class Lockpick : MonoBehaviour
     _player.GetComponent<CameraMovement>().canMove = false;
     _space.performed += Interact;
     _image.SetActive(true);
+    Vector3 pos;
+    pos.x = Random.Range(0, 2) == 1 ? Random.Range(-35, -20) : Random.Range(20, 35);
+    pos.y = Random.Range(0, 2) == 1 ? Random.Range(-35, -20) : Random.Range(20, 35);
+    pos.z = 0;
+    _goal.GetComponent<RectTransform>().localPosition = pos;
   }
   public void Interact(InputAction.CallbackContext ctx)
   {

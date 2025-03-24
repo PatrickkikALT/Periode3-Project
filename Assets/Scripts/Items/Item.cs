@@ -7,7 +7,6 @@ public class Item : MonoBehaviour, IPickupable, IInteractable
 {
 	public ItemSO item;
 	public bool PickUp() {
-		if (item.weight > InventoryManager.Instance.maxWeight) return false;
 		bool result = InventoryManager.Instance.AddItem(item, item.weight);
 		if (!result) {
 			return false;

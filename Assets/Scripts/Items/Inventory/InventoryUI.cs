@@ -16,7 +16,7 @@ public class InventoryUI : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.None;
 		foreach (ItemSO item in InventoryManager.Instance.GetItems()) {
 			var p = Instantiate(itemPanel, inventoryContent.transform);
-			p.transform.GetChild(0).GetComponent<Image>().sprite = item.sprite;
+			p.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = item.sprite;
 			p.GetComponent<ItemReference>().item = item;
 		}
 	}
