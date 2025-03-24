@@ -75,7 +75,7 @@ public class Save : MonoBehaviour
     public void SaveData() {
         path = Application.persistentDataPath + Path.DirectorySeparatorChar + "SaveData.json";
         saveData.money = player.Money;
-        saveData.upgrades = UpgradeManager.Instance.upgrades;
+        // saveData.upgrades = UpgradeManager.Instance.upgrades;
         string json = JsonUtility.ToJson(saveData);
         string encryptedJson = EncryptString(json);
 

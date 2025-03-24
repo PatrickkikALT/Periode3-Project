@@ -8,8 +8,8 @@ public class SpottingCamera : MonoBehaviour
   [Tooltip("The transform of the point it should rotate around.")]
   [SerializeField] private Transform turnPoint;
   [Tooltip("The target of the rotation.")]
-  [SerializeField] private int lTarget;
-  [SerializeField] private int rTarget;
+  public int lTarget;
+  public int rTarget;
   [Tooltip("How fast the camera moves in degrees.")]
   [SerializeField] private int speed;
 

@@ -19,10 +19,17 @@ public class Closet : MonoBehaviour, IInteractable
         _targetRotationR.y -= 90;
         _previousRotationL = leftDoor.transform.rotation.eulerAngles;
         _previousRotationR = rightDoor.transform.rotation.eulerAngles;
+        if (_targetRotationL.y < 0) {
+            _targetRotationL.y = 360 + _targetRotationL.y;
+        }
+        if (_targetRotationR.y < 0) {
+            _targetRotationR.y = 360 + _targetRotationR.y;
+        }
     }
     public void Interact() {
         StopAllCoroutines();
         if (!_hasOpenedCloset) {
+            print($"Left: {_targetRotationL}, Right: {_targetRotationR}");
             StartCoroutine(LerpDoor(_targetRotationL, _targetRotationR));
             _hasOpenedCloset = true;
         }
@@ -32,10 +39,15 @@ public class Closet : MonoBehaviour, IInteractable
         }
     }
 
+
     private IEnumerator LerpDoor(Vector3 toL, Vector3 toR) {
         while (leftDoor.transform.rotation.eulerAngles != toL) {
-            leftDoor.transform.rotation = Quaternion.Euler(Vector3.Lerp(leftDoor.transform.rotation.eulerAngles, toL, 1 * Time.deltaTime));
-            rightDoor.transform.rotation = Quaternion.Euler(Vector3.Lerp(rightDoor.transform.rotation.eulerAngles, toR, 1 * Time.deltaTime));
+            leftDoor.transform.rotation = Quaternion.Euler(new Vector3(leftDoor.transform.rotation.eulerAngles.x, 
+                                                        Mathf.LerpAngle(leftDoor.transform.rotation.eulerAngles.y, toL.y, 1 * Time.deltaTime), 
+                                                        leftDoor.transform.rotation.eulerAngles.z));
+            rightDoor.transform.rotation = Quaternion.Euler(new Vector3(rightDoor.transform.rotation.eulerAngles.x, 
+                                                        Mathf.LerpAngle(rightDoor.transform.rotation.eulerAngles.y, toR.y, 1 * Time.deltaTime), 
+                                                        rightDoor.transform.rotation.eulerAngles.z));
             yield return null;
         }
     }

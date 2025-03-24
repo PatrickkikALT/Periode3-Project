@@ -33,7 +33,7 @@ public class SoundDetector : MonoBehaviour
     [SerializeField] private Image soundIcon;
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private int counterUntilAlarm;
-    private bool _canCurrentlyReceiveSound;
+    private bool _canCurrentlyReceiveSound = true;
 
     private void Awake() {
         if (Instance == null) Instance = this;

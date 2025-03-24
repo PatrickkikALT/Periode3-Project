@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class CameraPosition : MonoBehaviour
 {
-    public Vector3 position;
-    public Quaternion rotation;
+    public int targetL, targetR;
 }
