@@ -8,11 +8,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+
+    public int lockpickSpeed;
     [SerializeField] private Light flashlight;
     [SerializeField] private GameObject youLost;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private PoliceLight policeLight;
     private int _money;
+    //Getter and setter to make money automatically update the moment its changed.
     public int Money
     {
         get => _money;
@@ -21,8 +24,6 @@ public class Player : MonoBehaviour {
             UpdateMoneyText();
         }
     }
-
-    public List<Upgrade> boughtUpgrades = new();
 
     public void UpdateMoneyText() => moneyText.text = $"${Money}";
     public void AddMoney(int value) => Money += value;

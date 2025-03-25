@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Target : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -14,5 +16,19 @@ public class Target : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
   void IPointerExitHandler.OnPointerExit(PointerEventData eventData) {
     redCircle.SetActive(false);
     print("Cursor left object");
+  }
+
+  public void SwitchScene(SceneAsset scene) {
+    StartCoroutine(FadeOut(scene));
+  }
+
+  private IEnumerator FadeOut(SceneAsset scene) {
+    while (GameManager.Instance.fadeImage.color != Color.black) {
+      var c = GameManager.Instance.fadeImage.color;
+      c = Color.Lerp(c, Color.black, 5 * Time.deltaTime);
+      GameManager.Instance.fadeImage.color = c;
+      yield return null;
+    }
+    SceneManager.LoadScene(scene.name);
   }
 }

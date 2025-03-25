@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ChooseMap : MonoBehaviour, IInteractable
 {
@@ -24,6 +25,7 @@ public class ChooseMap : MonoBehaviour, IInteractable
       _movement = _player.GetComponent<Movement>();
       _camMovement = _player.GetComponent<CameraMovement>();  
       _quit = _player.GetComponent<PlayerInput>().actions["Quit"];
+      SceneManager.sceneUnloaded += OnSceneUnload;
     }
 
     public void Interact() {
@@ -56,5 +58,9 @@ public class ChooseMap : MonoBehaviour, IInteractable
         _camera.transform.rotation = Quaternion.Lerp(_camera.transform.rotation, to.rotation, t);
       yield return null;
       }
+    }
+
+    public void OnSceneUnload(Scene scene) {
+      _quit.performed -= ExitBoard;
     }
 }

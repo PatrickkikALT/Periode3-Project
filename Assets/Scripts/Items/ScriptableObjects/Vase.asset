@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Vase
   m_EditorClassIdentifier: 
   worth: 5
-  weight: 0
+  weight: 2
   obj: {fileID: 2011588565445469349, guid: 2edb04859c08da6418ae477b86c720a3, type: 3}
   sprite: {fileID: 21300000, guid: 7b8787694b10b2147a72ed86b001da6f, type: 3}

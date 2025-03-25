@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Painting
   m_EditorClassIdentifier: 
   worth: 1000
-  weight: 0
+  weight: 1
   obj: {fileID: 7201799533737104786, guid: 05cc59456bc9581489ed4fb0c541ee24, type: 3}
   sprite: {fileID: 0}

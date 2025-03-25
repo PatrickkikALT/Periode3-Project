@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
     public Vector2 input;
     private Rigidbody _rb;
     public bool canMove = true;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(SleepRigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Item : MonoBehaviour, IPickupable, IInteractable
 {
 	public ItemSO item;

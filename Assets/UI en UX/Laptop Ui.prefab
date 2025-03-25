@@ -639,7 +639,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4137062607063964590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4397180983066078655}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4397180983066078655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,6 +668,7 @@ MonoBehaviour:
   neededToUnlock: 00000000010000000300000004000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 2
 --- !u!1 &554131911608679831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1290,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9067693207304956780}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7799524236077758567}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7799524236077758567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,6 +1319,7 @@ MonoBehaviour:
   neededToUnlock: 000000000100000002000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 0
 --- !u!1 &1220354762360793381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,8 +1489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.6458969, y: 11.5862}
+  m_SizeDelta: {x: 0.0751, y: 3.0479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1502544023588465599
 CanvasRenderer:
@@ -1898,7 +1924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300026}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8700590016742496837
@@ -2035,7 +2061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.000027}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300053}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6320061136658889373
@@ -2172,7 +2198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -51}
+  m_AnchoredPosition: {x: -5, y: -39}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2763208923662484731
@@ -2397,7 +2423,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3953692617220360527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6447593382754321029}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6447593382754321029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2414,6 +2452,7 @@ MonoBehaviour:
   neededToUnlock: 0000000002000000040000000500000007000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 1
 --- !u!1 &1601277139843243452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,8 +2562,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.6458969, y: 15.7892}
+  m_SizeDelta: {x: 0.0751, y: 3.0452}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2284797384869726056
 CanvasRenderer:
@@ -3452,7 +3491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.37}
-  m_AnchoredPosition: {x: 0, y: 5.0999756}
+  m_AnchoredPosition: {x: 0.00005340576, y: 4.699997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7081287332106478540
@@ -3887,7 +3926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8456785822158633708
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4360,7 +4399,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8343072395994370770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7167578562951525234}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7167578562951525234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4377,6 +4428,7 @@ MonoBehaviour:
   neededToUnlock: 0000000002000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 1
 --- !u!1 &3280921947300779796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4546,7 +4598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.000027}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300053}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1074117604951746902
@@ -5169,7 +5221,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8908982761434699867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6043944760917167466}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6043944760917167466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5186,6 +5250,7 @@ MonoBehaviour:
   neededToUnlock: 0000000001000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 2
 --- !u!1 &3927446970508759737
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,7 +6095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.37500003}
-  m_AnchoredPosition: {x: 0, y: 5.0999756}
+  m_AnchoredPosition: {x: 0, y: 4.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5582201987316475341
@@ -8201,8 +8266,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.03730011, y: 1.5329971}
+  m_SizeDelta: {x: 0.0744, y: 3.066}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8657527722257295980
 CanvasRenderer:
@@ -8296,7 +8361,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 10.435768, y: 129.2187, z: 9.887932, w: 8.729713}
+  m_margin: {x: 10.435768, y: 107.97313, z: 9.887932, w: 14.235554}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8530,7 +8595,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 98
+  m_fontSize: 81.05
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9170,7 +9235,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8369771054874251200}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 514276920150191625}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &514276920150191625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9187,6 +9264,7 @@ MonoBehaviour:
   neededToUnlock: 0000000001000000030000000400000006000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 2
 --- !u!1 &6350008352234054999
 GameObject:
   m_ObjectHideFlags: 0
@@ -9221,7 +9299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.000027}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300053}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7857008480999253374
@@ -9581,7 +9659,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6194536669799471451}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1012520698198769926}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1012520698198769926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9598,6 +9688,7 @@ MonoBehaviour:
   neededToUnlock: 00000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 2
 --- !u!1 &6678062334005123128
 GameObject:
   m_ObjectHideFlags: 0
@@ -9720,7 +9811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5574667438606222811}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5472300269000342032}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5472300269000342032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9737,6 +9840,7 @@ MonoBehaviour:
   neededToUnlock: 00000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 0
 --- !u!1 &6698486190042466219
 GameObject:
   m_ObjectHideFlags: 0
@@ -9985,7 +10089,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 149350946505227899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5136949026576923375}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5136949026576923375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10002,6 +10118,7 @@ MonoBehaviour:
   neededToUnlock: 0000000001000000020000000300000004000000050000000600000007000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 0
 --- !u!1 &6819969453573782878
 GameObject:
   m_ObjectHideFlags: 0
@@ -10036,8 +10153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.7479019, y: 11.5862}
+  m_SizeDelta: {x: 0.0751, y: 3.0479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &176052252102002378
 CanvasRenderer:
@@ -10171,8 +10288,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.7479019, y: 7.6209}
+  m_SizeDelta: {x: 0.0751, y: 3.0599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8128390418861964904
 CanvasRenderer:
@@ -10266,7 +10383,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 128.60681, z: 0, w: 9.126617}
+  m_margin: {x: 0, y: 120.848335, z: 0, w: 9.126617}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10306,8 +10423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 6.8}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.7479019, y: 22.7276}
+  m_SizeDelta: {x: 0.0751, y: 3.0452}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8236981692029378864
 CanvasRenderer:
@@ -10441,7 +10558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.000027}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300053}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4140261515102341846
@@ -10801,7 +10918,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6614597334575207353}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8353959930478892855}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8353959930478892855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10818,6 +10947,7 @@ MonoBehaviour:
   neededToUnlock: 
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 0
 --- !u!1 &7333310747077481656
 GameObject:
   m_ObjectHideFlags: 0
@@ -10987,7 +11117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 11.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &103086056792336950
@@ -11018,7 +11148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "+lockpick \nSpeed"
+  m_text: Lower Lockpick Speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96f72f0eda7456b49b38dd154aaa768c, type: 2}
   m_sharedMaterial: {fileID: -1351433934484971741, guid: 96f72f0eda7456b49b38dd154aaa768c,
@@ -11046,7 +11176,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 24.2
   m_fontSizeBase: 30.7
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11082,7 +11212,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 49.186768}
+  m_margin: {x: 20.109474, y: 15.960625, z: 17.720535, w: 49.186768}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11384,7 +11514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 15.699999}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &608268714514847603
@@ -11415,7 +11545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "+Lockpick \nSpeed"
+  m_text: Lower Lockpick Speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96f72f0eda7456b49b38dd154aaa768c, type: 2}
   m_sharedMaterial: {fileID: -1351433934484971741, guid: 96f72f0eda7456b49b38dd154aaa768c,
@@ -11443,7 +11573,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 22.85
   m_fontSizeBase: 30.7
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11479,7 +11609,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 47.620636}
+  m_margin: {x: 25.628197, y: 19.033684, z: 20.455872, w: 47.620636}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11741,7 +11871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.37500003}
-  m_AnchoredPosition: {x: 0, y: 14.999973}
+  m_AnchoredPosition: {x: 1.5, y: 15.7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6853872229153631541
@@ -12100,7 +12230,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 947718654648733967}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1216923271632115823}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: AddUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1216923271632115823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12117,6 +12259,7 @@ MonoBehaviour:
   neededToUnlock: 00000000020000000400000005000000
   cost: 0
   upgradeManager: {fileID: 0}
+  type: 0
 --- !u!1 &8504671732463054204
 GameObject:
   m_ObjectHideFlags: 0
@@ -12891,7 +13034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.000027}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300053}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9026962453789000260
@@ -13028,7 +13171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.000027}
+  m_AnchoredPosition: {x: -1.8400354, y: -36.300053}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &277975890780922305

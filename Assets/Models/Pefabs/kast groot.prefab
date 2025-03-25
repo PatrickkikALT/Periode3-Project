@@ -107,3 +107,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftDoor: {fileID: 0}
   rightDoor: {fileID: 0}
+  twoDoors: 1
+  opensLeftDoor: 0

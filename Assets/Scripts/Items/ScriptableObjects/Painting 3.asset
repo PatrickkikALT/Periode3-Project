@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Painting 3
   m_EditorClassIdentifier: 
   worth: 100
-  weight: 0
+  weight: 1
   obj: {fileID: 2292077102649759259, guid: dd49a10a4fe308a7bba5a7eaa3086845, type: 3}
   sprite: {fileID: 0}

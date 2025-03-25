@@ -257,7 +257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7770740745565873864
 Transform:
   m_ObjectHideFlags: 0
@@ -502,9 +502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8474ff4e7f86a79a596f757b730af946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.02
+  amount: 0.003
   frequency: 10
-  smooth: 10
+  smooth: 12.3
 --- !u!1 &5782971635577209474
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5897039823063661375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea2b625541a972d18b1281207e682cd, type: 3}
+  m_Script: {fileID: 11500000, guid: b4ab354bb60ecae4b9a039dca1fda76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7668311178013503721
@@ -785,6 +785,7 @@ GameObject:
   - component: {fileID: 2317339481618900597}
   - component: {fileID: 2327094215980477847}
   - component: {fileID: 8224991777467201254}
+  - component: {fileID: 5779012765839448211}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -921,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c298b864531d5e41801022f85e5b08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 4
   input: {x: 0, y: 0}
   canMove: 1
   stairLayer:
@@ -1062,19 +1063,7 @@ MonoBehaviour:
     m_ActionId: 269280a6-e39e-412e-aeba-e7c23c47f950
     m_ActionName: Movement/Pick Up[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2327094215980477847}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: OpenInventoryUI
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0c547115-46dc-4272-b4f8-efcc771b7374
     m_ActionName: Movement/Open Inventory[/Keyboard/e]
   - m_PersistentCalls:
@@ -1089,6 +1078,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 725fe1b1-d941-4085-bada-6ee3c99205f9
     m_ActionName: Movement/Quit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5779012765839448211}
+        m_TargetAssemblyTypeName: Save, Assembly-CSharp
+        m_MethodName: ClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ad47a52d-e4c7-41e1-b630-e95bc40090c0
+    m_ActionName: Movement/Remove Save devtool[/Keyboard/numpadPeriod]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -1106,11 +1111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52c1db7b8ad3604491145165884bb0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockpickSpeed: 0
   flashlight: {fileID: 7526401043318120046}
   youLost: {fileID: 0}
   moneyText: {fileID: 0}
   policeLight: {fileID: 0}
-  boughtUpgrades: []
 --- !u!114 &2327094215980477847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +1132,8 @@ MonoBehaviour:
   maxItems: 20
   inventoryPanel: {fileID: 0}
   inventoryContent: {fileID: 0}
-  maxWeight: 0
+  infoText: {fileID: 0}
+  maxWeight: 2
 --- !u!114 &8224991777467201254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,3 +1146,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd109c4459038f4092d990613ca63ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5779012765839448211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668311178013503721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6916e8c9745bbf9428a8ac38877ce3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData:
+    backpackSize: 0
+    walkingSpeed: 0
+    lockpickSpeed: 0
+    money: 0
+    upgrades:
+      _serializedList: []
+  path: /home/patrick/Downloads/Periode3/Periode3-Project/Assets/SaveData.json
+  key: skibidisigmarizz
+  mainMenu: 0
+  player: {fileID: 2317339481618900597}

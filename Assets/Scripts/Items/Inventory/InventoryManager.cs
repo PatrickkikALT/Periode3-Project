@@ -23,17 +23,27 @@ public class InventoryManager : MonoBehaviour {
 		return items[index];
 	}
 
+	//Tries to add the item to the inventory but if it fails returns false so it can be handled further within the item script.
 	public bool AddItem(ItemSO item, int weight) {
 		if (weight > maxWeight) {
-			StopAllCoroutines();
-			infoText.gameObject.SetActive(true);
-			infoText.text = "This item is too heavy..";
-			StartCoroutine(TextDisappear());
+			SetInfoText("This item is too heavy...");
+			return false;
+		}
+		if (items.Count + 1 >= maxWeight) {
+			SetInfoText("My backpack is full..");
 			return false;
 		}
 		items.Add(item);
 		return true;
 	}
+
+	public void SetInfoText(string text) {
+			StopAllCoroutines();
+			infoText.gameObject.SetActive(true);
+			infoText.text = text;
+			StartCoroutine(TextDisappear());
+	}
+
 
 	private IEnumerator TextDisappear() {
 		yield return new WaitForSeconds(1f);

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blood Diamond
   m_EditorClassIdentifier: 
   worth: 500
-  weight: 0
+  weight: 1
   obj: {fileID: 5961561288303609138, guid: 029a79d4018ba974684709c214eb08ae, type: 3}
   sprite: {fileID: 21300000, guid: 6cd3a1d5fd466d14aa0b31ab45bf4258, type: 3}

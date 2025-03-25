@@ -1,28 +1,66 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AYellowpaper.SerializedCollections;
+using Unity.VisualScripting;
 using UnityEngine;
+[Serializable]
+enum UpgradeType{
+  BACKPACK,
+  LOCKPICK,
+  WALKING
+}
 
 public class UpgradeManager : MonoBehaviour
 {
-    public Dictionary<Upgrade, bool> upgrades;
-
+    public SerializedDictionary<Upgrade, bool> upgrades = new SerializedDictionary<Upgrade, bool>();
     public static UpgradeManager Instance;
+
+    public Player player;
+
+    private int _currentBackpackLevel = 1;
+    [SerializeField] private int maxBackpackLevel;
+    private int _currentLockpickLevel = 1;
+    [SerializeField] private int maxLockpickLevel;
+    private int _currentWalkingSpeedLevel = 1;
+    [SerializeField] private int maxWalkingSpeedLevel;
+
 
 
     void Awake() {
         if (Instance == null) Instance = this; else Destroy(this);
+        DontDestroyOnLoad(transform.parent);
     }
     void Start() {
-      foreach (int i in Save.instance.saveData.upgradesBought) {
-        var upgrade = upgrades.ElementAt(i).Key;
-        upgrades[upgrade] = true;
+      player = GameManager.Instance.player; 
+      var dict = upgrades;
+      foreach (Upgrade upgrade in dict.Keys) {
+        upgrade.Init();
+        if (upgrades[upgrade]) {
+          upgrade.AddUpgrade();
+        }
       }
-      foreach (Upgrade upgrade in upgrades.Keys) {
-        upgrade.upgradeManager = this;
-        // if (upgrades[upgrade]) {
-          
-        // }
-      }
+    }
+
+    public bool BackpackUpgrade() {
+      if (_currentBackpackLevel >= maxBackpackLevel ) return false;
+      player.GetComponent<InventoryManager>().maxWeight += 2;
+      _currentBackpackLevel++;
+      return true;
+    }
+
+    public bool LockpickUpgrade() {
+      if (_currentLockpickLevel >= maxLockpickLevel) return false;
+      player.lockpickSpeed -= 2;
+      _currentLockpickLevel++;
+      return true;
+    }
+
+    public bool WalkingSpeedUpgrade() {
+      if (_currentWalkingSpeedLevel >= maxWalkingSpeedLevel) return false;
+      player.GetComponent<Movement>().speed++;
+      _currentWalkingSpeedLevel++;
+      return true;
     }
 }

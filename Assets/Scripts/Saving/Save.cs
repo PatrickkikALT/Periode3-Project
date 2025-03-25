@@ -3,7 +3,9 @@ using System.Collections;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Save : MonoBehaviour
 {
@@ -89,7 +91,7 @@ public class Save : MonoBehaviour
   {
     path = Application.persistentDataPath + Path.DirectorySeparatorChar + "SaveData.json";
     saveData.money = player.Money;
-    // saveData.upgrades = UpgradeManager.Instance.upgrades;
+    saveData.upgrades = UpgradeManager.Instance.upgrades;
     string json = JsonUtility.ToJson(saveData);
     string encryptedJson = EncryptString(json);
 
@@ -133,5 +135,6 @@ public class Save : MonoBehaviour
   public void ClearData()
   {
     File.Delete(path);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
 }

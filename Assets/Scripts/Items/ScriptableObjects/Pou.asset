@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pou
   m_EditorClassIdentifier: 
   worth: 100
-  weight: 0
+  weight: 1
   obj: {fileID: 2827591076152486571, guid: 64ff0219e5c65934193862fd900589ac, type: 3}
   sprite: {fileID: 0}

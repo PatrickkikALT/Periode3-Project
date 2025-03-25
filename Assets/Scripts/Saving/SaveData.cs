@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using AYellowpaper.SerializedCollections;
 [Serializable]
 public class SaveData
 {
@@ -8,7 +8,5 @@ public class SaveData
   public int walkingSpeed;
   public int lockpickSpeed;
   public int money;
-  public int[] upgradesBought;
-
-  public Dictionary<Upgrade, bool> upgrades;
+  public SerializedDictionary<Upgrade, bool> upgrades;
 }
