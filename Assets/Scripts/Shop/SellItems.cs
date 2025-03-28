@@ -20,4 +20,18 @@ public class SellItems : MonoBehaviour
         Debug.Log($"Failed to sell item at index {index}");
     }
   }
+  public void SellAllItems() {
+    if (_player == null) {
+      _player = GameManager.Instance.player;
+    }
+
+    var inventory = _player.GetComponent<InventoryManager>();
+    var items = inventory.GetItems();
+    foreach (var item in items) {
+      if (inventory.RemoveItem(item)) {
+        _player.AddMoney(item.worth);
+      }
+    }
+    Cursor.lockState = CursorLockMode.None;
+  }
 }

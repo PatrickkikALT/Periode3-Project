@@ -13,9 +13,10 @@ public class Closet : MonoBehaviour, IInteractable
   private bool _hasOpenedCloset;
   [SerializeField] private bool twoDoors;
   [SerializeField] private bool opensLeftDoor;
+  [SerializeField] private bool opensOneDoor;
   private void Start()
   {
-    if (opensLeftDoor || twoDoors) {
+    if (opensLeftDoor || twoDoors || opensOneDoor) {
       leftDoor = transform.GetChild(0).gameObject;
       _targetRotationL = leftDoor.transform.rotation.eulerAngles;
       _targetRotationL.y += 90;
@@ -24,7 +25,7 @@ public class Closet : MonoBehaviour, IInteractable
         _targetRotationL.y = 360 + _targetRotationL.y;
       }
     }
-    if (twoDoors || !opensLeftDoor) {
+    if (twoDoors || !opensLeftDoor || !opensOneDoor) {
       rightDoor = transform.GetChild(1).gameObject;
       _targetRotationR = rightDoor.transform.rotation.eulerAngles;
       _targetRotationR.y -= 90;

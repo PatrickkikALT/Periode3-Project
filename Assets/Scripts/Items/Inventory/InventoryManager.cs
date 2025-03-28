@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour {
-	[SerializeField] private List<ItemSO> items;
+	public List<ItemSO> items;
 	[SerializeField] private int maxItems;
 	public static InventoryManager Instance;
 	[SerializeField] private GameObject inventoryPanel;
@@ -16,7 +16,7 @@ public class InventoryManager : MonoBehaviour {
 	[SerializeField] private TMP_Text infoText;
 	public int maxWeight;
 	private void Start() {
-		if (Instance == null) Instance = this;
+		if (Instance == null) Instance = this; else Destroy(this);
 	}
 
 	public ItemSO GetItem(int index) {
@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour {
 			SetInfoText("This item is too heavy...");
 			return false;
 		}
-		if (items.Count + 1 >= maxWeight) {
+		if (items.Count + 1 >= maxItems) {
 			SetInfoText("My backpack is full..");
 			return false;
 		}

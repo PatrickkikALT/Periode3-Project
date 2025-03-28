@@ -18,17 +18,17 @@ public class Target : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     print("Cursor left object");
   }
 
-  public void SwitchScene(SceneAsset scene) {
-    StartCoroutine(FadeOut(scene));
+  public void SwitchScene(int id) {
+    StartCoroutine(FadeOut(id));
   }
 
-  private IEnumerator FadeOut(SceneAsset scene) {
+  private IEnumerator FadeOut(int id) {
     while (GameManager.Instance.fadeImage.color != Color.black) {
       var c = GameManager.Instance.fadeImage.color;
       c = Color.Lerp(c, Color.black, 5 * Time.deltaTime);
       GameManager.Instance.fadeImage.color = c;
       yield return null;
     }
-    SceneManager.LoadScene(scene.name);
+    SceneManager.LoadScene(id);
   }
 }

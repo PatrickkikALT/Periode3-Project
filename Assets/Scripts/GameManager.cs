@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,20 +19,38 @@ public class GameManager : MonoBehaviour
   public bool isPlayerUsingSafe;
   public Image fadeImage;
   [SerializeField] private Color transparent;
+  public bool hasBoughtCrowbar;
+  public Dictionary<int, bool> abilities = new();
+  public HackCameras cameraHack;
+  public HackSoundDetector soundDetectorHack;
+
+  public List<ItemSO> items = new();
 
   private void Awake() {
     if (Instance == null) Instance = this; else Destroy(this);
     brokenGlass = Resources.Load("BrokenWindow");
     player = FindObjectOfType<Player>();
+    abilities.Add(0, false);
+    abilities.Add(1, false);
   }
   private void Start() {
+
     SceneManager.activeSceneChanged += OnSceneChange;
+    SceneManager.sceneUnloaded += OnSceneUnload;
     StartCoroutine(CleanList());
+    cameraHack = player.GetComponent<HackCameras>();
+    soundDetectorHack = player.GetComponent<HackSoundDetector>();
   }
 
+  private void OnSceneUnload(Scene scene) {
+    items = player.GetComponent<InventoryManager>().GetItems().ToList();
+  }
   private void OnSceneChange(Scene scene, Scene scene2) {
     player = FindObjectOfType<Player>();
+    player.GetComponent<InventoryManager>().items = items;
     StartCoroutine(FadeIn());
+    cameraHack = player.GetComponent<HackCameras>();
+    soundDetectorHack = player.GetComponent<HackSoundDetector>();
   }
 
   private IEnumerator FadeIn() {
@@ -47,5 +67,13 @@ public class GameManager : MonoBehaviour
       currentlyBrokenGlass.RemoveAll(o => o == null);
       yield return new WaitForSeconds(10);
     }
+  }
+
+  public void BuyCrowbar() {
+    hasBoughtCrowbar = true;
+  }
+
+  public void BuyAbility(int id) {
+    abilities[id] = true;
   }
 }
