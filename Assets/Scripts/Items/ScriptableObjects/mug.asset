@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb91171210fef094cad5d55a4760a91c, type: 3}
-  m_Name: Laptop
+  m_Name: mug
   m_EditorClassIdentifier: 
-  worth: 200
-  weight: 2
-  obj: {fileID: 7085390325547929432, guid: 48312c0f0ae310343b6c4d66e6f2e397, type: 3}
-  sprite: {fileID: 21300000, guid: d264d8ad861ea014f9cc2234a213ad6a, type: 3}
+  worth: 5
+  weight: 1
+  obj: {fileID: 5764071615107555782, guid: 894f63bad3f2af745ab54173d9a419c5, type: 3}
+  sprite: {fileID: 21300000, guid: 69259665a229d5443a9a5ba776a1c1a1, type: 3}
