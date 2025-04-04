@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
   private void OnSceneUnload(Scene scene) {
     items = player.GetComponent<InventoryManager>().GetItems().ToList();
+    player = null;
   }
   private void OnSceneChange(Scene scene, Scene scene2) {
     player = FindObjectOfType<Player>();
@@ -61,6 +62,12 @@ public class GameManager : MonoBehaviour
       yield return null;
     }
   }
+  void Update()
+  {
+    if (player == null) {
+      player = FindAnyObjectByType<Player>();
+    }
+  }
 
   private IEnumerator CleanList() {
     while (true) {
@@ -70,10 +77,14 @@ public class GameManager : MonoBehaviour
   }
 
   public void BuyCrowbar() {
-    hasBoughtCrowbar = true;
+    if (player.RemoveMoney(100)) {
+      hasBoughtCrowbar = true;
+    }
   }
 
   public void BuyAbility(int id) {
-    abilities[id] = true;
+    if (player.RemoveMoney(100)) {
+      abilities[id] = true;
+    }
   }
 }

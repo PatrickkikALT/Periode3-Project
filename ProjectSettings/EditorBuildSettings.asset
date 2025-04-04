@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mansion2.unity
     guid: 863117e83438a9a0d93efb4f3ef46ccc
+  - enabled: 1
+    path: Assets/Mansion3.unity
+    guid: 063089383812c774b8382244a8fd5dc7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8c1bf3b9ec1cfae4ba73a6f8a41b80c2,
       type: 3}

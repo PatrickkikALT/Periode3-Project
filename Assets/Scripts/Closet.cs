@@ -11,9 +11,11 @@ public class Closet : MonoBehaviour, IInteractable
   private Vector3 _targetRotationL, _targetRotationR;
   private Vector3 _previousRotationL, _previousRotationR;
   private bool _hasOpenedCloset;
+  
   [SerializeField] private bool twoDoors;
   [SerializeField] private bool opensLeftDoor;
   [SerializeField] private bool opensOneDoor;
+  [SerializeField] private int closetSpeed;
   private void Start()
   {
     if (opensLeftDoor || twoDoors || opensOneDoor) {
@@ -56,10 +58,10 @@ public class Closet : MonoBehaviour, IInteractable
     if (twoDoors) {
       while (leftDoor.transform.rotation.eulerAngles != toL) {
         leftDoor.transform.rotation = Quaternion.Euler(new Vector3(leftDoor.transform.rotation.eulerAngles.x,
-                                                    Mathf.LerpAngle(leftDoor.transform.rotation.eulerAngles.y, toL.y, 1 * Time.deltaTime),
+                                                    Mathf.LerpAngle(leftDoor.transform.rotation.eulerAngles.y, toL.y, closetSpeed * Time.deltaTime),
                                                     leftDoor.transform.rotation.eulerAngles.z));
         rightDoor.transform.rotation = Quaternion.Euler(new Vector3(rightDoor.transform.rotation.eulerAngles.x,
-                                                    Mathf.LerpAngle(rightDoor.transform.rotation.eulerAngles.y, toR.y, 1 * Time.deltaTime),
+                                                    Mathf.LerpAngle(rightDoor.transform.rotation.eulerAngles.y, toR.y, closetSpeed * Time.deltaTime),
                                                     rightDoor.transform.rotation.eulerAngles.z));
         yield return null;
       }
@@ -67,7 +69,7 @@ public class Closet : MonoBehaviour, IInteractable
     if (opensLeftDoor) {
       while (leftDoor.transform.rotation.eulerAngles != toL) {
         leftDoor.transform.rotation = Quaternion.Euler(new Vector3(leftDoor.transform.rotation.eulerAngles.x,
-                                            Mathf.LerpAngle(leftDoor.transform.rotation.eulerAngles.y, toL.y, 1 * Time.deltaTime),
+                                            Mathf.LerpAngle(leftDoor.transform.rotation.eulerAngles.y, toL.y, closetSpeed * Time.deltaTime),
                                             leftDoor.transform.rotation.eulerAngles.z));
         yield return null;
       }
@@ -75,7 +77,7 @@ public class Closet : MonoBehaviour, IInteractable
     else if (!opensLeftDoor) {
       while (rightDoor.transform.rotation.eulerAngles != toR) {
         rightDoor.transform.rotation = Quaternion.Euler(new Vector3(rightDoor.transform.rotation.eulerAngles.x,
-                                            Mathf.LerpAngle(rightDoor.transform.rotation.eulerAngles.y, toR.y, 1 * Time.deltaTime),
+                                            Mathf.LerpAngle(rightDoor.transform.rotation.eulerAngles.y, toR.y, closetSpeed * Time.deltaTime),
                                             rightDoor.transform.rotation.eulerAngles.z));
         yield return null;
       }

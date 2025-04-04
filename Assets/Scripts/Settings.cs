@@ -10,6 +10,7 @@ public class Settings : MonoBehaviour
   [SerializeField] private AudioMixer mixer;
   [SerializeField] private TMP_Text sfxText, musicText;
 
+
   public void ChangeSfx(float value) {
     mixer.SetFloat("Sfx", Mathf.Log10(value) * 20);
     sfxText.text = $"{Mathf.RoundToInt(value * 100)}";

@@ -33,17 +33,26 @@ public class UpgradeManager : MonoBehaviour
         DontDestroyOnLoad(transform.parent);
     }
     void Start() {
+
       player = GameManager.Instance.player; 
       var dict = upgrades;
       foreach (Upgrade upgrade in dict.Keys) {
         upgrade.Init();
         if (upgrades[upgrade]) {
           upgrade.AddUpgrade();
+          upgrade.UpdateSprite();
         }
       }
     }
 
+    void SpriteUpdate() {
+      var dict = upgrades;
+      foreach (Upgrade upgrade in dict.Keys) {
+        upgrade.UpdateSprite();
+      }
+    }
     public bool BackpackUpgrade() {
+      SpriteUpdate();
       if (_currentBackpackLevel >= maxBackpackLevel ) return false;
       player.GetComponent<InventoryManager>().maxWeight += 2;
       _currentBackpackLevel++;
@@ -51,6 +60,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     public bool LockpickUpgrade() {
+      SpriteUpdate();
       if (_currentLockpickLevel >= maxLockpickLevel) return false;
       player.lockpickSpeed -= 2;
       _currentLockpickLevel++;
@@ -58,6 +68,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     public bool WalkingSpeedUpgrade() {
+      SpriteUpdate();
       if (_currentWalkingSpeedLevel >= maxWalkingSpeedLevel) return false;
       player.GetComponent<Movement>().speed++;
       _currentWalkingSpeedLevel++;

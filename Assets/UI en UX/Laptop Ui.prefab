@@ -657,9 +657,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   neededToUnlock: 00000000010000000300000004000000
-  cost: 0
+  cost: 160
   upgradeManager: {fileID: 0}
   type: 2
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &554131911608679831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,9 +1311,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   neededToUnlock: 000000000100000002000000
-  cost: 0
+  cost: 140
   upgradeManager: {fileID: 0}
   type: 0
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &1220354762360793381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,9 +2447,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 10
   neededToUnlock: 0000000002000000040000000500000007000000
-  cost: 0
+  cost: 180
   upgradeManager: {fileID: 0}
   type: 1
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &1601277139843243452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,9 +4516,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   neededToUnlock: 0000000002000000
-  cost: 0
+  cost: 140
   upgradeManager: {fileID: 0}
   type: 1
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &3280921947300779796
 GameObject:
   m_ObjectHideFlags: 0
@@ -5329,9 +5341,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   neededToUnlock: 0000000001000000
-  cost: 0
+  cost: 140
   upgradeManager: {fileID: 0}
   type: 2
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &3927446970508759737
 GameObject:
   m_ObjectHideFlags: 0
@@ -9450,9 +9465,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 8
   neededToUnlock: 0000000001000000030000000400000006000000
-  cost: 0
+  cost: 180
   upgradeManager: {fileID: 0}
   type: 2
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &6350008352234054999
 GameObject:
   m_ObjectHideFlags: 0
@@ -9874,9 +9892,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   neededToUnlock: 00000000
-  cost: 0
+  cost: 120
   upgradeManager: {fileID: 0}
   type: 2
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &6678062334005123128
 GameObject:
   m_ObjectHideFlags: 0
@@ -10026,9 +10047,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   neededToUnlock: 00000000
-  cost: 0
+  cost: 120
   upgradeManager: {fileID: 0}
   type: 0
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &6698486190042466219
 GameObject:
   m_ObjectHideFlags: 0
@@ -10304,9 +10328,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 9
   neededToUnlock: 0000000001000000020000000300000004000000050000000600000007000000
-  cost: 0
+  cost: 200
   upgradeManager: {fileID: 0}
   type: 0
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &6819969453573782878
 GameObject:
   m_ObjectHideFlags: 0
@@ -11133,9 +11160,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   neededToUnlock: 
-  cost: 0
+  cost: 100
   upgradeManager: {fileID: 0}
   type: 0
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &7333310747077481656
 GameObject:
   m_ObjectHideFlags: 0
@@ -12506,9 +12536,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   neededToUnlock: 00000000020000000400000005000000
-  cost: 0
+  cost: 160
   upgradeManager: {fileID: 0}
   type: 0
+  bought: {fileID: 21300000, guid: 6bc0b5f753920674a966053bb91c90d3, type: 3}
+  locked: {fileID: 21300000, guid: 6d3927b6ad834b741ab0c2cc52f09ef4, type: 3}
+  unlocked: {fileID: 21300000, guid: ede44b99ce0227a4d8d4decd1c642129, type: 3}
 --- !u!1 &8504671732463054204
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour {
 	public List<ItemSO> items;
-	[SerializeField] private int maxItems;
+	public int maxItems;
 	public static InventoryManager Instance;
 	[SerializeField] private GameObject inventoryPanel;
 	[SerializeField] private GameObject inventoryContent;

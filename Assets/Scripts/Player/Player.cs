@@ -55,4 +55,9 @@ public class Player : MonoBehaviour {
     {
         Money = Save.instance.saveData.money;
     }
+
+    [ContextMenu("Add Money")]
+    private void MoneyDevTool() {
+        Money += 500;
+    }
 }

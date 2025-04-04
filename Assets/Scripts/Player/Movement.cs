@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,9 +13,12 @@ public class Movement : MonoBehaviour
     public bool canMove = true;
     [SerializeField] private LayerMask stairLayer;
     private Transform _camera;
+    [SerializeField] private AudioClip[] clips;
+    [SerializeField] private AudioSource source;
     private bool _isTouchingStairs => Physics.OverlapSphereNonAlloc(transform.position, overlapSphereSize, new Collider[2], stairLayer) > 0;
     public void OnMove(InputAction.CallbackContext ctx) {
         input = ctx.ReadValue<Vector2>();
+        
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
@@ -26,7 +30,8 @@ public class Movement : MonoBehaviour
     }
     private void Start() {
         _rb = GetComponent<Rigidbody>();
-        _camera = Camera.main.transform;
+        _camera = Camera.main.transform; 
+        StartCoroutine(WalkSoundLoop());
     }
 
     private void Update() {
@@ -58,6 +63,19 @@ public class Movement : MonoBehaviour
             if (onGround) {
                 jumping = false;
             }
+        }
+    }
+
+    private IEnumerator WalkSoundLoop() {
+        while (true) {
+            if (input.magnitude <= 0) {
+                yield return new WaitUntil(() => input.magnitude > 0);
+            }
+            yield return null;
+            var clip = clips[Random.Range(0, clips.Length - 1)];
+            source.clip = clip;
+            source.Play();
+            yield return new WaitForSeconds(clip.length * 3.5f);
         }
     }
 }

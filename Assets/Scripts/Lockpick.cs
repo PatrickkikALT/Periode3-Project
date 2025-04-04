@@ -20,6 +20,8 @@ public class Lockpick : MonoBehaviour
   private Door _currentDoor;
   [SerializeField] private int speed;
 
+  [SerializeField] private AudioSource unlock;
+
   void Awake()
   {
     if (Instance == null) Instance = this; else Destroy(this);
@@ -58,6 +60,7 @@ public class Lockpick : MonoBehaviour
     if (GetWorldSpaceRect(_spinner.GetComponent<RectTransform>()).Overlaps(GetWorldSpaceRect(_goal.GetComponent<RectTransform>()), true))
     {
       _currentDoor.locked = false;
+      unlock.Play();
       _image.SetActive(false);
       _player.GetComponent<Movement>().canMove = true;
       _player.GetComponent<CameraMovement>().canMove = true;

@@ -10,6 +10,9 @@ public class Door : MonoBehaviour, IInteractable
   [SerializeField] private SoundDetector.Severity severity = SoundDetector.Severity.QUIET;
   public bool locked;
 
+  [SerializeField] private AudioClip[] openAudio, closeAudio;
+  [SerializeField] private AudioSource door;
+ 
   private void Start() {
     locked = UnityEngine.Random.Range(0, 2) == 1;
     _openTarget = transform.rotation * Quaternion.Euler(0, -90, 0);
@@ -31,12 +34,16 @@ public class Door : MonoBehaviour, IInteractable
     }
     if (!_opened) {
       StopAllCoroutines();
+      door.clip = openAudio[UnityEngine.Random.Range(0, openAudio.Length - 1)];
+      door.Play();
       print($"Target rotation {_openTarget.eulerAngles}");
       StartCoroutine(DoorAnimation(_openTarget));
       _opened = true;
     }
     else {
       StopAllCoroutines();
+      door.clip = closeAudio[UnityEngine.Random.Range(0, closeAudio.Length - 1)];
+      door.Play();
       print($"Target rotation {_closeTarget.eulerAngles}");
       StartCoroutine(DoorAnimation(_closeTarget));
       _opened = false;

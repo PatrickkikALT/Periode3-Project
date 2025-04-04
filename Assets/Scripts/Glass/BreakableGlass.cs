@@ -10,6 +10,8 @@ public class BreakableGlass : MonoBehaviour, IInteractable
   private Rigidbody _rb;
   private Object _brokenGlass;
 
+  [SerializeField] private AudioSource @break;
+
 
   public void Interact() {
     Break();
@@ -17,6 +19,7 @@ public class BreakableGlass : MonoBehaviour, IInteractable
   private void Start() {
     _brokenGlass = GameManager.Instance.brokenGlass;
     _rb = GetComponent<Rigidbody>();
+    @break = transform.parent.GetComponent<AudioSource>();
   }
   void FixedUpdate() {
     if (_rb.velocity.magnitude > 2f) {
@@ -25,6 +28,7 @@ public class BreakableGlass : MonoBehaviour, IInteractable
   }
   [ContextMenu("Break")]
   public void Break() {
+    @break.Play();
     if (SoundDetector.Instance != null) {
       SoundDetector.Instance.ReceiveSound(gameObject, severity);
     }
