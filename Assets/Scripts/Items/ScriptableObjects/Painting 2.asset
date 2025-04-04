@@ -15,4 +15,4 @@ MonoBehaviour:
   worth: -500
   weight: 1
   obj: {fileID: 3151575164689831266, guid: a82a5507c69e14c3a8a99264dd527539, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d264d8ad861ea014f9cc2234a213ad6a, type: 3}

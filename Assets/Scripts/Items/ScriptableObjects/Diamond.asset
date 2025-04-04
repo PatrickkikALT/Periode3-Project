@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worth: 500
   weight: 1
-  obj: {fileID: 0}
+  obj: {fileID: 8441124635284255357, guid: 3e4c9343c4b494c448eac36c1e721f01, type: 3}
   sprite: {fileID: 21300000, guid: 845078fdc49afa7428bbb9d63a077f9f, type: 3}
