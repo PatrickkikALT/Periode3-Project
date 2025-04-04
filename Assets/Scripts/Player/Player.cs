@@ -42,6 +42,8 @@ public class Player : MonoBehaviour {
         StartCoroutine(WaitForLoss());
     }
 
+    
+
     private IEnumerator WaitForLoss() {
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene("Main Menu");
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour {
     private void Start()
     {
         Money = Save.instance.saveData.money;
+        lockpickSpeed = GameManager.Instance.lockpickSpeed;
     }
 
     [ContextMenu("Add Money")]

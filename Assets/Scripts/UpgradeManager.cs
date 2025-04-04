@@ -55,6 +55,8 @@ public class UpgradeManager : MonoBehaviour
       if (_currentBackpackLevel >= maxBackpackLevel ) return false;
       player.GetComponent<InventoryManager>().maxWeight += 2;
       player.GetComponent<InventoryManager>().maxItems += 10;
+      GameManager.Instance.backpackSize = player.GetComponent<InventoryManager>().maxItems;
+      GameManager.Instance.maxWeight = player.GetComponent<InventoryManager>().maxWeight;
       _currentBackpackLevel++;
       return true;
     }
@@ -64,6 +66,7 @@ public class UpgradeManager : MonoBehaviour
       if (_currentLockpickLevel >= maxLockpickLevel) return false;
       player.lockpickSpeed -= 2;
       _currentLockpickLevel++;
+      GameManager.Instance.lockpickSpeed = player.lockpickSpeed;
       return true;
     }
 
@@ -72,6 +75,7 @@ public class UpgradeManager : MonoBehaviour
       if (_currentWalkingSpeedLevel >= maxWalkingSpeedLevel) return false;
       player.GetComponent<Movement>().speed++;
       _currentWalkingSpeedLevel++;
+      GameManager.Instance.walkingSpeed = player.GetComponent<Movement>().speed;
       return true;
     }
 }

@@ -28,7 +28,11 @@ public class Safe : MonoBehaviour, IInteractable
   [SerializeField] private GameObject postItNoteHolder;
   [SerializeField] private bool isBigSafe;
 
+  [SerializeField] private AudioClip rotateClip, correctClip;
+  private AudioSource _source;
+
   private void Start() {
+    _source = GetComponent<AudioSource>();
     code = new int[] {
       Random.Range(1, 9), Random.Range(1, 9), Random.Range(1, 9), Random.Range(1, 9),
     };
@@ -96,12 +100,16 @@ public class Safe : MonoBehaviour, IInteractable
     Quaternion currentRotation = turnDial.transform.localRotation;
     Quaternion newRotation = Quaternion.Euler(rotationAmount, 0, 0) * currentRotation;
     turnDial.transform.localRotation = newRotation;
+    _source.clip = rotateClip;
+    _source.Play();
   }
   
   private void ConfirmNumber(InputAction.CallbackContext ctx) {
     if (IsInRangeWithBuffer(Mathf.RoundToInt(NormalizeAngle(turnDial.transform.eulerAngles.x)), Mathf.RoundToInt(GameManager.Instance.safeNumberRotations[code[currentNum] - 1].x), buffer)) {
       print("Met rotation requirement");
       currentNum++;
+      _source.clip = correctClip;
+      _source.Play();
       if (currentNum == code.Length) {
         print("Safe opened");
         FinishSafe();

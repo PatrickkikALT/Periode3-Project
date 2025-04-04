@@ -24,13 +24,16 @@ public class GameManager : MonoBehaviour
   public HackCameras cameraHack;
   public HackSoundDetector soundDetectorHack;
 
+  public int backpackSize = 20, lockpickSpeed = 10, maxWeight = 2;
+  public float walkingSpeed = 5;
+
   public List<ItemSO> items = new();
 
   public float sfx, music;
 
   private void Awake() {
     
-    if (Instance == null) Instance = this;
+    if (Instance == null) Instance = this; else Destroy(gameObject);
     brokenGlass = Resources.Load("BrokenWindow");
     player = FindObjectOfType<Player>();
     abilities.Add(0, false);

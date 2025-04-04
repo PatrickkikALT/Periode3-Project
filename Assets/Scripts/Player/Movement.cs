@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _camera = Camera.main.transform; 
         StartCoroutine(WalkSoundLoop());
+        speed = GameManager.Instance.walkingSpeed;
     }
 
     private void Update() {

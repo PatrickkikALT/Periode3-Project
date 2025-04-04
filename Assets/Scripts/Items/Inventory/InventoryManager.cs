@@ -17,6 +17,8 @@ public class InventoryManager : MonoBehaviour {
 	public int maxWeight;
 	private void Start() {
 		if (Instance == null) Instance = this; else Destroy(this);
+		maxItems = GameManager.Instance.backpackSize;
+		maxWeight = GameManager.Instance.maxWeight;
 	}
 
 	public ItemSO GetItem(int index) {
