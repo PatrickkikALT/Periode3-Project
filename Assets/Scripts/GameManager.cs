@@ -26,15 +26,18 @@ public class GameManager : MonoBehaviour
 
   public List<ItemSO> items = new();
 
+  public float sfx, music;
+
   private void Awake() {
-    if (Instance == null) Instance = this; else Destroy(this);
+    
+    if (Instance == null) Instance = this;
     brokenGlass = Resources.Load("BrokenWindow");
     player = FindObjectOfType<Player>();
     abilities.Add(0, false);
     abilities.Add(1, false);
   }
   private void Start() {
-
+    DontDestroyOnLoad(transform.parent);
     SceneManager.activeSceneChanged += OnSceneChange;
     SceneManager.sceneUnloaded += OnSceneUnload;
     StartCoroutine(CleanList());

@@ -919,8 +919,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.15, y: 1.15, z: 1.15}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5718831840301017257}
   - {fileID: 8049515132894534625}
@@ -1512,6 +1512,10 @@ MonoBehaviour:
   startAudio: {fileID: 5131837499632922400}
   loopAudio: {fileID: 3998388282058643870}
   miku: {fileID: 0}
+  pinkPantherStart: {fileID: 0}
+  pinkPantherLoop: {fileID: 0}
+  spawnSceneIndex: 0
+  ambient: {fileID: 0}
 --- !u!82 &8613113419068171778
 AudioSource:
   m_ObjectHideFlags: 0

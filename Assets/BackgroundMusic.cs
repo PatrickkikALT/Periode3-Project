@@ -13,7 +13,7 @@ public class BackgroundMusic : MonoBehaviour
   [SerializeField] private AudioClip ambient;
   void Start()
   {
-    Coroutine coroutine = (SceneManager.GetActiveScene().buildIndex == spawnSceneIndex) ? StartCoroutine(AudioLoop(pinkPantherStart, true)) : StartCoroutine(AudioLoop(ambient, false));
+    Coroutine coroutine = (SceneManager.GetActiveScene().buildIndex == spawnSceneIndex) ? StartCoroutine(AudioLoop(pinkPantherLoop, true)) : StartCoroutine(AudioLoop(ambient, false));
     coroutine = null;
   }
 
@@ -24,6 +24,7 @@ public class BackgroundMusic : MonoBehaviour
       startAudio.Play();
       yield return new WaitUntil(() => !startAudio.isPlaying);
     }
+    
     loopAudio.Play();
   }
 }
