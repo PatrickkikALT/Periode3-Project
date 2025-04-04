@@ -14,10 +14,12 @@ public class Settings : MonoBehaviour
   public void ChangeSfx(float value) {
     mixer.SetFloat("Sfx", Mathf.Log10(value) * 20);
     sfxText.text = $"{Mathf.RoundToInt(value * 100)}";
+    GameManager.Instance.sfx = value;
   }
   public void ChangeMusic(float value) {
     mixer.SetFloat("Music",Mathf.Log10(value) * 20);
     musicText.text = $"{Mathf.RoundToInt(value * 100)}";
+    GameManager.Instance.music = value;
   }
 
   public void SetFPS(string value) {
@@ -33,6 +35,10 @@ public class Settings : MonoBehaviour
   [SerializeField] private int currentResolutionIndex = 0;
   void Start()
   {
+    ChangeSfx(GameManager.Instance.sfx == 0 ? 1 : GameManager.Instance.sfx);
+    ChangeMusic(GameManager.Instance.music == 0 ? 1 : GameManager.Instance.music);
+
+
     foreach(var v in resolutionDropdown) {
       v.ClearOptions();
     }

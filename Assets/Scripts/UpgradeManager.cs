@@ -30,7 +30,6 @@ public class UpgradeManager : MonoBehaviour
 
     void Awake() {
         if (Instance == null) Instance = this; else Destroy(this);
-        DontDestroyOnLoad(transform.parent);
     }
     void Start() {
 
@@ -55,6 +54,7 @@ public class UpgradeManager : MonoBehaviour
       SpriteUpdate();
       if (_currentBackpackLevel >= maxBackpackLevel ) return false;
       player.GetComponent<InventoryManager>().maxWeight += 2;
+      player.GetComponent<InventoryManager>().maxItems += 10;
       _currentBackpackLevel++;
       return true;
     }
