@@ -781,18 +781,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: cbe639be0190ae73fbf882b2d9a4f136,
         type: 2}
+    - target: {fileID: 995710714809920633, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: closetSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1474972386928618404, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: cbe639be0190ae73fbf882b2d9a4f136,
         type: 2}
+    - target: {fileID: 1516570658588613342, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1708281761645549317, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: c21c26b6bd9a670d0a06e505ff15f6a8,
         type: 2}
+    - target: {fileID: 1737921245240696322, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1744066710269669345, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: item
@@ -829,6 +844,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1340a91784dcee545a2743f1ca186823,
         type: 2}
+    - target: {fileID: 2715235187828324600, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: closetSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2978834246995889987, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: item
@@ -940,6 +960,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3941eb22189e46f81ad2096f5eca0a6f,
         type: 2}
+    - target: {fileID: 5308435284792924372, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5544209631961384194, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -1023,9 +1048,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1340a91784dcee545a2743f1ca186823,
         type: 2}
+    - target: {fileID: 7171444000019124180, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: closetSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7525730547564018387, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769748181161005079, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7806141611328254109, guid: c8418fca18a39184eaae79cfc2d38f16,
@@ -1044,6 +1079,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518825912798212037, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: closetSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523779161836348937, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: closetSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8593484887594744786, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
@@ -1074,6 +1119,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9bac65cc88ea6574e9eaaf6f50924bb9,
         type: 2}
+    - target: {fileID: 9205742503591277941, guid: c8418fca18a39184eaae79cfc2d38f16,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9208356921654165441, guid: c8418fca18a39184eaae79cfc2d38f16,
         type: 3}
       propertyPath: item
